@@ -707,6 +707,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const track   = document.getElementById('tm-cards-track');
     const prevBtn = document.getElementById('tm-prev-btn');
     const nextBtn = document.getElementById('tm-next-btn');
+    const bar     = document.getElementById('tm-scroll-bar');
 
     if (!track) return;
 
@@ -761,6 +762,13 @@ document.addEventListener('DOMContentLoaded', () => {
       if (!prevBtn || !nextBtn) return;
       prevBtn.disabled = track.scrollLeft <= 4;
       nextBtn.disabled = track.scrollLeft >= track.scrollWidth - track.clientWidth - 4;
+
+      // Update progress bar width
+      if (bar) {
+        const maxScroll = track.scrollWidth - track.clientWidth;
+        const pct = maxScroll > 0 ? (track.scrollLeft / maxScroll) * 100 : 0;
+        bar.style.width = pct + '%';
+      }
     }
 
     if (prevBtn && nextBtn) {
@@ -1111,7 +1119,7 @@ document.addEventListener('DOMContentLoaded', () => {
       // 5. Buttons
       '.btn-primary, .btn-secondary, .cf-submit-btn, .nri-link, .lo-learn-more, .card-cta, .si-nav-arrows button, .tm-nav-arrows button, .sg-controls button, .cf-footer-cta, .btn-video-text, .hero-video-btn',
       // 6. Images
-      '.about-photo-card, .lo-visual, .nri-card img, .cf-footer-logo, .hero-bg-image, .about-bg-image, .lo-visual-img, .partner-logo-img, .tm-card-avatar',
+      '.about-photo-card, .lo-visual, .nri-card img, .cf-footer-logo, .hero-bg-image, .about-bg-image, .lo-visual-img, .partner-logo-img, .tm-card-avatar, .feature-image-cover-card',
       // 7. Statistics
       '.hero-stats, .stats-cards-grid, .stat-number-val, .sg-counter'
     ];
@@ -1412,6 +1420,20 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       }, { passive: true });
     }
+  })();
+
+  // ── Redesigned Features Card Spotlight Interaction ──
+  (function initFeaturesSpotlight() {
+    const cards = document.querySelectorAll('.feature-card.content-card');
+    cards.forEach(card => {
+      card.addEventListener('mousemove', e => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        card.style.setProperty('--mouse-x', `${x}px`);
+        card.style.setProperty('--mouse-y', `${y}px`);
+      });
+    });
   })();
 
   window.addEventListener('load', () => {

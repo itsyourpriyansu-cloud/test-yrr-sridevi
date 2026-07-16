@@ -23,7 +23,7 @@
 
         <!-- Stylesheets -->
         <link rel="stylesheet" href="css/lenis.css?v=85">
-        <link rel="stylesheet" href="css/main.css?v=85">
+        <link rel="stylesheet" href="css/main.css?v=102">
         <script>
             (function (w, d) {
                 w.CollectId = "69b7f0f518c1363cba380cac";
@@ -103,7 +103,7 @@
                 class="hero" id="hero">
                 <!-- Background image of premium real estate executive -->
                 <img
-                src="Assets/Img/jagadeesh-yr.png" alt="Yoshitha Real Rise Executive" class="hero-bg-image">
+                src="Assets/Img/sridevi-yr.png" alt="Yoshitha Real Rise Executive" class="hero-bg-image">
                 <!-- <div class="hero-video-overlay"></div> -->
 
                 <div class="container hero-video-container">
@@ -361,6 +361,7 @@
                 <!-- ABOUT SECTION -->
                 <section class="about" id="about">
                     <img src="Assets/Img/bg-img-about.webp" alt="Senior Real Estate Partner representing Yoshitha Infra" class="about-bg-image" loading="lazy">
+                    <div class="about-bg-glow"></div>
                     <div class="container">
                         <div class="about-grid">
                             <div class="about-content">
@@ -375,12 +376,21 @@
 
                             <a href="https://www.instagram.com/reel/Dap0x3ADTZl/" target="_blank" rel="noopener" class="about-photo-card about-reel-wrap" aria-label="View this reel on Instagram">
                                 <video src="Assets/Video/instavideo.mp4" autoplay muted loop playsinline preload="metadata"></video>
+                                <div class="about-video-play-overlay">
+                                    <div class="play-pulse-ring"></div>
+                                    <div class="play-btn-circle">
+                                        <svg viewbox="0 0 24 24" fill="currentColor">
+                                            <path d="M8 5v14l11-7z"/>
+                                        </svg>
+                                    </div>
+                                    <span class="play-badge">WATCH REEL</span>
+                                </div>
                             </a>
 
                             <div class="about-points">
                                 <div class="about-point-card">
                                     <div class="about-point-icon-box">
-                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <svg viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                             <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
                                             <polyline points="14 2 14 8 20 8"/>
                                             <path d="m9 15 2 2 4-4"/>
@@ -391,7 +401,7 @@
                                 </div>
                                 <div class="about-point-card">
                                     <div class="about-point-icon-box">
-                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <svg viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                             <polygon points="3 6 9 3 15 6 21 3 21 18 15 21 9 18 3 21"/>
                                             <line x1="9" y1="3" x2="9" y2="18"/>
                                             <line x1="15" y1="6" x2="15" y2="21"/>
@@ -433,108 +443,112 @@
                             </div>
                         </div>
 
-                        <!-- 2x3 Features Grid -->
-                        <div
-                            class="features-grid">
-
-                            <!-- Card 1: Image Card -->
-                            <div class="feature-card image-card">
+                        <!-- Redesigned Features Grid Layout -->
+                        <div class="features-layout">
+                            
+                            <!-- Left Column: Large Image Card -->
+                            <div class="feature-image-cover-card">
                                 <div class="card-image-wrap">
-                                    <img src="Assets/Img/features-park.webp" alt="Premium Gated Community Plots" loading="lazy">
+                                    <img src="Assets/Amenities/community-aerial-view.webp" alt="Premium Gated Community Plots" loading="lazy">
                                 </div>
                                 <div class="features-image-overlay"></div>
                                 <div class="features-image-content">
                                     <span class="features-image-tag">Community</span>
                                     <h4 class="features-image-title">Premium Villa Plots</h4>
+                                    <div class="features-image-divider"></div>
+                                    <p class="features-image-desc">Spacious plots in a premium gated community crafted for privacy, comfort, and prestige.</p>
                                 </div>
                             </div>
-
-                            <!-- Card 2: Content Card -->
-                            <div class="feature-card content-card">
-                                <span class="card-num">01</span>
-                                <div
-                                    class="card-icon-box">
-                                    <!-- Location Icon -->
-                                    <svg viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
-                                        <circle cx="12" cy="10" r="3"/>
-                                    </svg>
+                            
+                            <!-- Right Column: 2x2 Content Cards Grid -->
+                            <div class="features-right-grid">
+                                
+                                <!-- Card 01: Strategic Location -->
+                                <div class="feature-card content-card">
+                                    <div class="card-top-row">
+                                        <div class="card-icon-box">
+                                            <!-- Location Pin Icon -->
+                                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                                                <circle cx="12" cy="10" r="3"/>
+                                            </svg>
+                                        </div>
+                                        <span class="card-num">01</span>
+                                    </div>
+                                    <h3 class="card-title">Strategic Location</h3>
+                                    <p class="card-description">
+                                        Excellent connectivity to RRR, Hyderabad Airport, and Bangalore Highway.
+                                    </p>
+                                    <a href="#contact" class="card-cta">
+                                        <span>LEARN MORE &nbsp; →</span>
+                                    </a>
                                 </div>
-                                <h3 class="card-title">Strategic Location</h3>
-                                <p class="card-description">
-                                    Excellent connectivity to RRR, Hyderabad Airport, and Bangalore Highway.
-                                </p>
-                                <a href="#contact" class="card-cta">LEARN MORE</a>
+                                
+                                <!-- Card 02: Thoughtfully Planned Development -->
+                                <div class="feature-card content-card">
+                                    <div class="card-top-row">
+                                        <div class="card-icon-box">
+                                            <!-- House Icon -->
+                                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                                                <polyline points="9 22 9 12 15 12 15 22"/>
+                                            </svg>
+                                        </div>
+                                        <span class="card-num">02</span>
+                                    </div>
+                                    <h3 class="card-title">Thoughtfully Planned Development</h3>
+                                    <p class="card-description">
+                                        Wide roads, avenue plantations, underground utilities, and well-planned infrastructure.
+                                    </p>
+                                    <a href="#contact" class="card-cta">
+                                        <span>LEARN MORE &nbsp; →</span>
+                                    </a>
+                                </div>
+                                
+                                <!-- Card 03: Trusted & Secure Investment -->
+                                <div class="feature-card content-card">
+                                    <div class="card-top-row">
+                                        <div class="card-icon-box">
+                                            <!-- Shield Icon -->
+                                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                                            </svg>
+                                        </div>
+                                        <span class="card-num">03</span>
+                                    </div>
+                                    <h3 class="card-title">Trusted & Secure Investment</h3>
+                                    <p class="card-description">
+                                        DTCP-approved layout, clear documentation, and a transparent buying process.
+                                    </p>
+                                    <a href="#contact" class="card-cta">
+                                        <span>LEARN MORE &nbsp; →</span>
+                                    </a>
+                                </div>
+                                
+                                <!-- Card 04: Premium Infrastructure -->
+                                <div class="feature-card content-card">
+                                    <div class="card-top-row">
+                                        <div class="card-icon-box">
+                                            <!-- Rising Bar Chart Icon -->
+                                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                <line x1="18" y1="20" x2="18" y2="10" />
+                                                <line x1="12" y1="20" x2="12" y2="4" />
+                                                <line x1="6" y1="20" x2="6" y2="14" />
+                                            </svg>
+                                        </div>
+                                        <span class="card-num">04</span>
+                                    </div>
+                                    <h3 class="card-title">Premium Infrastructure</h3>
+                                    <p class="card-description">
+                                        Wide internal roads, landscaped avenues, underground utilities, and thoughtfully planned development.
+                                    </p>
+                                    <a href="#contact" class="card-cta">
+                                        <span>LEARN MORE &nbsp; →</span>
+                                    </a>
+                                </div>
+                                
                             </div>
-
-                            <!-- Card 3: Content Card -->
-                            <div class="feature-card content-card">
-                                <span class="card-num">02</span>
-                                <div
-                                    class="card-icon-box">
-                                    <!-- Shield Icon -->
-                                    <svg viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
-                                        <polyline points="9 22 9 12 15 12 15 22"/>
-                                    </svg>
-                                </div>
-                                <h3 class="card-title">Thoughtfully Planned Development</h3>
-                                <p class="card-description">
-                                    A premium villa plot community featuring wide roads, avenue plantations, underground utilities, and well-planned infrastructure.
-                                </p>
-                                <a href="#contact" class="card-cta">LEARN MORE</a>
-                            </div>
-
-                            <!-- Card 4: Content Card -->
-                            <div class="feature-card content-card">
-                                <span class="card-num">03</span>
-                                <div
-                                    class="card-icon-box">
-                                    <!-- Villa/Home Icon -->
-                                    <svg viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-                                    </svg>
-                                </div>
-                                <h3 class="card-title">Trusted & Secure Investment</h3>
-                                <p class="card-description">
-                                    Developed by Yoshitha Housing & Infra with DTCP-approved layouts, clear documentation, and a transparent buying process.
-                                </p>
-                                <a href="#contact" class="card-cta">LEARN MORE</a>
-                            </div>
-
-                            <!-- Card 5: Content Card -->
-                            <div class="feature-card content-card">
-                                <span class="card-num">04</span>
-                                <div
-                                    class="card-icon-box">
-                                    <!-- Growth Arrow Icon -->
-                                    <svg viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                        <line x1="18" y1="20" x2="18" y2="10"/>
-                                        <line x1="12" y1="20" x2="12" y2="4"/>
-                                        <line x1="6" y1="20" x2="6" y2="14"/>
-                                    </svg>
-                                </div>
-                                <h3 class="card-title">Premium Infrastructure</h3>
-                                <p class="card-description">
-                                    Wide internal roads, landscaped avenues, underground utilities, and thoughtfully planned development.
-                                </p>
-                                <a href="#contact" class="card-cta">LEARN MORE</a>
-                            </div>
-
-                            <!-- Card 6: Image Card -->
-                            <div class="feature-card image-card">
-                                <div class="card-image-wrap">
-                                    <img src="Assets/Img/features-play.webp" alt="Bespoke Luxury Villa Interior" loading="lazy">
-                                </div>
-                                <div class="features-image-overlay"></div>
-                                <div class="features-image-content">
-                                    <span class="features-image-tag">Interiors</span>
-                                    <h4 class="features-image-title">Bespoke Luxury Villa</h4>
-                                </div>
-                            </div>
-
                         </div>
-                        <!-- /features-grid -->
                     </div>
                     <!-- /container -->
                 </section>
@@ -573,6 +587,10 @@
                                         <polyline points="12 5 19 12 12 19"></polyline>
                                     </svg>
                                 </button>
+                            </div>
+
+                            <div class="si-scroll-indicator">
+                                <div class="si-scroll-bar" id="si-scroll-bar"></div>
                             </div>
                             <!-- /si-nav-arrows -->
                         </div>
@@ -929,263 +947,11 @@
                     </div>
                 </section>
 
-                <!-- LOCATION OVERVIEW — Accordion with real project imagery -->
-                <section class="location-overview" id="location">
-                    <div class="container">
-                        <div class="lo-header">
-                            <span class="lo-eyebrow">LOCATION ADVANTAGE
-                            </span>
-                            <h2 class="lo-title">Location
-                                <span class="location-overview-color">Overview</span>
-                            </h2>
-                            <p class="lo-subtitle">Experience the advantage of a prime location with excellent connectivity, established infrastructure, and a future-ready investment destination.</p>
-                        </div>
-
-                        <div
-                            class="lo-grid">
-                            <!-- Interactive Accordion (Full Width) -->
-                            <div
-                                class="lo-accordion" id="lo-accordion">
-                                <!-- Item 1: Major Landmarks -->
-                                <div class="lo-item is-open" data-lo-index="0">
-                                    <button class="lo-item-header" aria-expanded="true">
-                                        <div class="lo-item-header-title">
-                                            <span
-                                                class="lo-item-icon-wrapper color-blue">
-                                                <!-- School / Education Landmark Icon -->
-                                                <svg viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                                    <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
-                                                    <path d="M6 12v5c0 2 2 3 6 3s6-1 6-3v-5"></path>
-                                                </svg>
-                                            </span>
-                                            <span class="lo-item-title">Major Landmarks</span>
-                                        </div>
-                                        <span class="lo-item-icon">
-                                            <span></span>
-                                            <span></span>
-                                        </span>
-                                    </button>
-
-                                    <div class="lo-item-content">
-                                        <div class="lo-item-inner">
-                                            <div
-                                                class="lo-landmark-grid">
-                                                <!-- Landmark 1 -->
-                                                <div class="lo-landmark-card">
-                                                    <div class="lo-landmark-icon-box bg-blue">
-                                                        <svg viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22v-5M9 17h6M4 12V6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v6M12 4v4"/></svg>
-                                                    </div>
-                                                    <div class="lo-landmark-info">
-                                                        <span class="lo-landmark-name">Symbiosis International Univ.</span>
-                                                        <span class="lo-landmark-desc">Reputed global higher education campus</span>
-                                                    </div>
-                                                    <span class="lo-landmark-badge badge-blue">10 MINS</span>
-                                                </div>
-
-                                                <!-- Landmark 2 -->
-                                                <div class="lo-landmark-card">
-                                                    <div class="lo-landmark-icon-box bg-blue">
-                                                        <svg viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 2 2 3 6 3s6-1 6-3v-5"/></svg>
-                                                    </div>
-                                                    <div class="lo-landmark-info">
-                                                        <span class="lo-landmark-name">Heritage Valley School</span>
-                                                        <span class="lo-landmark-desc">Premium international residential school</span>
-                                                    </div>
-                                                    <span class="lo-landmark-badge badge-blue">10 MINS</span>
-                                                </div>
-
-                                                <!-- Landmark 3 -->
-                                                <div class="lo-landmark-card">
-                                                    <div class="lo-landmark-icon-box bg-blue">
-                                                        <svg viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 3v18M15 3v18M3 9h18M3 15h18"/></svg>
-                                                    </div>
-                                                    <div class="lo-landmark-info">
-                                                        <span class="lo-landmark-name">Shadnagar Town & Banks</span>
-                                                        <span class="lo-landmark-desc">Primary commercial core, banks & daily utilities</span>
-                                                    </div>
-                                                    <span class="lo-landmark-badge badge-blue">5 MINS</span>
-                                                </div>
-
-                                                <!-- Landmark 4 -->
-                                                <div class="lo-landmark-card">
-                                                    <div class="lo-landmark-icon-box bg-blue">
-                                                        <svg viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-                                                    </div>
-                                                    <div class="lo-landmark-info">
-                                                        <span class="lo-landmark-name">NRR Community Hospital</span>
-                                                        <span class="lo-landmark-desc">Multi-specialty healthcare and emergencies</span>
-                                                    </div>
-                                                    <span class="lo-landmark-badge badge-blue">8 MINS</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <!-- Item 2: Connectivity -->
-                                <div class="lo-item" data-lo-index="1">
-                                    <button class="lo-item-header" aria-expanded="false">
-                                        <div class="lo-item-header-title">
-                                            <span
-                                                class="lo-item-icon-wrapper color-green">
-                                                <!-- Compass / Road Connectivity Icon -->
-                                                <svg viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                                    <circle cx="12" cy="12" r="10"></circle>
-                                                    <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon>
-                                                </svg>
-                                            </span>
-                                            <span class="lo-item-title">Connectivity Hub</span>
-                                        </div>
-                                        <span class="lo-item-icon">
-                                            <span></span>
-                                            <span></span>
-                                        </span>
-                                    </button>
-
-                                    <div class="lo-item-content">
-                                        <div class="lo-item-inner">
-                                            <div
-                                                class="lo-landmark-grid">
-                                                <!-- Connectivity 1 -->
-                                                <div class="lo-landmark-card">
-                                                    <div class="lo-landmark-icon-box bg-green">
-                                                        <svg viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 11 2 2 4-4"/></svg>
-                                                    </div>
-                                                    <div class="lo-landmark-info">
-                                                        <span class="lo-landmark-name">Bangalore Highway (NH-44)</span>
-                                                        <span class="lo-landmark-desc">Direct high-speed arterial corridor connection</span>
-                                                    </div>
-                                                    <span class="lo-landmark-badge badge-green">2 MINS</span>
-                                                </div>
-
-                                                <!-- Connectivity 2 -->
-                                                <div class="lo-landmark-card">
-                                                    <div class="lo-landmark-icon-box bg-green">
-                                                        <svg viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m10 15 5-3-5-3v6z"/></svg>
-                                                    </div>
-                                                    <div class="lo-landmark-info">
-                                                        <span class="lo-landmark-name">Proposed Regional Ring Road (RRR)</span>
-                                                        <span class="lo-landmark-desc">Gateway to the outer circumferential transport web</span>
-                                                    </div>
-                                                    <span class="lo-landmark-badge badge-green">5 MINS</span>
-                                                </div>
-
-                                                <!-- Connectivity 3 -->
-                                                <div class="lo-landmark-card">
-                                                    <div class="lo-landmark-icon-box bg-green">
-                                                        <svg viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
-                                                    </div>
-                                                    <div class="lo-landmark-info">
-                                                        <span class="lo-landmark-name">RGIA Shamshabad Airport</span>
-                                                        <span class="lo-landmark-desc">International flights within rapid driving distance</span>
-                                                    </div>
-                                                    <span class="lo-landmark-badge badge-green">30 MINS</span>
-                                                </div>
-
-                                                <!-- Connectivity 4 -->
-                                                <div class="lo-landmark-card">
-                                                    <div class="lo-landmark-icon-box bg-green">
-                                                        <svg viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
-                                                    </div>
-                                                    <div class="lo-landmark-info">
-                                                        <span class="lo-landmark-name">Outer Ring Road (ORR) Junction</span>
-                                                        <span class="lo-landmark-desc">Seamless entry point to core Hyderabad grid</span>
-                                                    </div>
-                                                    <span class="lo-landmark-badge badge-green">20 MINS</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <!-- Item 3: Growth Corridor -->
-                                <div class="lo-item" data-lo-index="2">
-                                    <button class="lo-item-header" aria-expanded="false">
-                                        <div class="lo-item-header-title">
-                                            <span
-                                                class="lo-item-icon-wrapper color-yellow">
-                                                <!-- Growth / Rising chart Icon -->
-                                                <svg viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                                    <line x1="18" y1="20" x2="18" y2="10"></line>
-                                                    <line x1="12" y1="20" x2="12" y2="4"></line>
-                                                    <line x1="6" y1="20" x2="6" y2="14"></line>
-                                                    <path d="M3 20h18"></path>
-                                                </svg>
-                                            </span>
-                                            <span class="lo-item-title">Growth Corridor</span>
-                                        </div>
-                                        <span class="lo-item-icon">
-                                            <span></span>
-                                            <span></span>
-                                        </span>
-                                    </button>
-
-                                    <div class="lo-item-content">
-                                        <div class="lo-item-inner">
-                                            <div
-                                                class="lo-landmark-grid">
-                                                <!-- Growth 1 -->
-                                                <div class="lo-landmark-card">
-                                                    <div class="lo-landmark-icon-box bg-yellow">
-                                                        <svg viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/><path d="M12 11v6M9 14h6"/></svg>
-                                                    </div>
-                                                    <div class="lo-landmark-info">
-                                                        <span class="lo-landmark-name">MSN Laboratories & Pharma Zone</span>
-                                                        <span class="lo-landmark-desc">Major pharmaceutical industrial employment center</span>
-                                                    </div>
-                                                    <span class="lo-landmark-badge badge-yellow">15 MINS</span>
-                                                </div>
-
-                                                <!-- Growth 2 -->
-                                                <div class="lo-landmark-card">
-                                                    <div class="lo-landmark-icon-box bg-yellow">
-                                                        <svg viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
-                                                    </div>
-                                                    <div class="lo-landmark-info">
-                                                        <span class="lo-landmark-name">Amazon Web Services Data Center</span>
-                                                        <span class="lo-landmark-desc">High-value tech infrastructure investment zone</span>
-                                                    </div>
-                                                    <span class="lo-landmark-badge badge-yellow">25 MINS</span>
-                                                </div>
-
-                                                <!-- Growth 3 -->
-                                                <div class="lo-landmark-card">
-                                                    <div class="lo-landmark-icon-box bg-yellow">
-                                                        <svg viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-                                                    </div>
-                                                    <div class="lo-landmark-info">
-                                                        <span class="lo-landmark-name">Shadnagar Industrial & Logistics Parks</span>
-                                                        <span class="lo-landmark-desc">Large industrial corridor driving land appreciation</span>
-                                                    </div>
-                                                    <span class="lo-landmark-badge badge-yellow">15 MINS</span>
-                                                </div>
-
-                                                <!-- Growth 4 -->
-                                                <div class="lo-landmark-card">
-                                                    <div class="lo-landmark-icon-box bg-yellow">
-                                                        <svg viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-                                                    </div>
-                                                    <div class="lo-landmark-info">
-                                                        <span class="lo-landmark-name">TSSPDCL Smart Grid Stations</span>
-                                                        <span class="lo-landmark-desc">Future-proof electric grids and community power</span>
-                                                    </div>
-                                                    <span class="lo-landmark-badge badge-yellow">10 MINS</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
                 <!-- TESTIMONIALS — same dark-navy split-panel layout as Smart Investors -->
                 <section class="tm-section" id="testimonials">
-                    <div
-                        class="tm-layout">
+                    <div class="tm-layout">
 
-                        <!-- LEFT PANEL: sticky info + arrows -->
+                        <!-- LEFT PANEL: sticky info + arrows + scroll progress -->
                         <div class="tm-left-panel">
                             <span class="si-tag">
                                 <span class="si-tag-dot"></span>
@@ -1194,7 +960,7 @@
                             <h2 class="tm-heading">Real words from<br>real investors.</h2>
                             <p class="tm-desc">Here's what our partners have to say about working with Yoshitha Infra — real moments, real experiences, real feedback.</p>
 
-                            <!-- Navigation arrows — placed below description -->
+                            <!-- Navigation arrows & Progress Bar -->
                             <div class="tm-nav-arrows" role="group" aria-label="Navigate testimonials">
                                 <button class="tm-nav-btn" id="tm-prev-btn" aria-label="Previous testimonial" disabled>
                                     <svg width="20" height="20" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -1209,15 +975,32 @@
                                     </svg>
                                 </button>
                             </div>
+
+                            <div class="tm-scroll-indicator" aria-hidden="true">
+                                <div class="tm-scroll-bar" id="tm-scroll-bar"></div>
+                            </div>
                         </div>
 
                         <!-- RIGHT PANEL: horizontally scrollable testimonial cards -->
                         <div class="tm-right-panel">
-                            <div
-                                class="tm-cards-track" id="tm-cards-track">
+                            <div class="tm-cards-track" id="tm-cards-track">
 
                                 <!-- Testimonial Card 1 -->
                                 <div class="tm-card">
+                                    <div class="tm-card-top">
+                                        <div class="tm-rating" aria-label="5 star rating">
+                                            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                                            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                                            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                                            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                                            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                                        </div>
+                                        <div class="tm-quote-icon" aria-hidden="true">
+                                            <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
+                                                <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/>
+                                            </svg>
+                                        </div>
+                                    </div>
                                     <p class="tm-card-quote">"Yoshitha Infra has redefined property buying. Their focus on legal compliance, clear documentation, and landscape aesthetics is unmatched in the market."</p>
                                     <div class="tm-card-author">
                                         <img src="Assets/Img/testimonial_aditya.webp" alt="Aditya Vardhan" class="tm-card-avatar" loading="lazy">
@@ -1230,6 +1013,20 @@
 
                                 <!-- Testimonial Card 2 -->
                                 <div class="tm-card">
+                                    <div class="tm-card-top">
+                                        <div class="tm-rating" aria-label="5 star rating">
+                                            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                                            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                                            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                                            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                                            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                                        </div>
+                                        <div class="tm-quote-icon" aria-hidden="true">
+                                            <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
+                                                <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/>
+                                            </svg>
+                                        </div>
+                                    </div>
                                     <p class="tm-card-quote">"The bento grids outlining locations made choosing simple. Their transparency in plotting real values and providing instant confirmation receipts on site was amazing."</p>
                                     <div class="tm-card-author">
                                         <img src="Assets/Img/testimonial_sravani.webp" alt="Sravani Prasad" class="tm-card-avatar" loading="lazy">
@@ -1242,6 +1039,20 @@
 
                                 <!-- Testimonial Card 3 -->
                                 <div class="tm-card">
+                                    <div class="tm-card-top">
+                                        <div class="tm-rating" aria-label="5 star rating">
+                                            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                                            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                                            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                                            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                                            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                                        </div>
+                                        <div class="tm-quote-icon" aria-hidden="true">
+                                            <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
+                                                <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/>
+                                            </svg>
+                                        </div>
+                                    </div>
                                     <p class="tm-card-quote">"Excellent premium layouts with consistent spacing. Working alongside their agent team is like stepping straight into the future of luxury community infrastructure."</p>
                                     <div class="tm-card-author">
                                         <img src="Assets/Img/testimonial_rohan.webp" alt="Rohan K. Naidu" class="tm-card-avatar" loading="lazy">
@@ -1254,6 +1065,20 @@
 
                                 <!-- Testimonial Card 4 -->
                                 <div class="tm-card">
+                                    <div class="tm-card-top">
+                                        <div class="tm-rating" aria-label="5 star rating">
+                                            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                                            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                                            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                                            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                                            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                                        </div>
+                                        <div class="tm-quote-icon" aria-hidden="true">
+                                            <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
+                                                <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/>
+                                            </svg>
+                                        </div>
+                                    </div>
                                     <p class="tm-card-quote">"From first site visit to final documentation, the team was precise, transparent, and genuinely committed to securing the best value corridors for our portfolio."</p>
                                     <div class="tm-card-author">
                                         <img src="Assets/Img/testimonial_kiran.webp" alt="Kiran Mehta" class="tm-card-avatar" loading="lazy">
@@ -1265,12 +1090,32 @@
                                 </div>
 
                             </div>
-                            <!-- /tm-cards-track -->
                         </div>
-                        <!-- /tm-right-panel -->
 
                     </div>
                 </section>
+
+                <!-- IMPACTFUL SUCCESSES — featured single testimonial spotlight -->
+                <!-- <section class="is-section" id="impact-stories">
+                    <div class="container">
+                        <div class="is-inner">
+                            <span class="is-tag">
+                                <span class="is-tag-dot"></span>
+                                IMPACT STORIES
+                            </span>
+                            <h2 class="is-heading">Impactful<br><span>Successes</span></h2>
+
+                            <div class="is-quote-wrap">
+                                <span class="is-mark is-mark-left" aria-hidden="true">&#8220;</span>
+                                <div class="is-quote-body">
+                                    <p class="is-quote-text">Knowing that my investment is directly building a <strong>thriving, well-planned community</strong> fills me with pride. The transparency and dedication of the team at every stage is unmatched.</p>
+                                    <span class="is-author">Meera Chandran</span>
+                                </div>
+                                <span class="is-mark is-mark-right" aria-hidden="true">&#8221;</span>
+                            </div>
+                        </div>
+                    </div>
+                </section> -->
 
 
                 <!-- NRI SUPPORT SECTION -->
@@ -1323,10 +1168,10 @@
                                 </div>
 
                                 <!-- <div class="nri-action">
-                                              <a href="#contact" class="btn-primary nri-link">
-                                                <span>Talk to an NRI Advisor &nbsp; ↗</span>
-                                              </a>
-                                            </div> -->
+                                                                              <a href="#contact" class="btn-primary nri-link">
+                                                                                <span>Talk to an NRI Advisor &nbsp; ↗</span>
+                                                                              </a>
+                                                                            </div> -->
                             </div>
 
                             <!-- Right Column: Visual Regional Grid -->
@@ -1340,11 +1185,11 @@
                                             <!-- <span class="nri-card-tagline">High-Growth Portfolio</span> -->
                                         </div>
                                         <!-- <div class="nri-card-expand">
-                                                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                                                            <line x1="7" y1="17" x2="17" y2="7"></line>
-                                                            <polyline points="7 7 17 7 17 17"></polyline>
-                                                          </svg>
-                                                        </div> -->
+                                                                                                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                                                                                                    <line x1="7" y1="17" x2="17" y2="7"></line>
+                                                                                                    <polyline points="7 7 17 7 17 17"></polyline>
+                                                                                                  </svg>
+                                                                                                </div> -->
                                     </div>
 
                                     <div class="nri-card" tabindex="0">
@@ -1352,14 +1197,14 @@
                                         <div class="nri-card-overlay"></div>
                                         <div
                                             class="nri-card-content"><!-- <span class="nri-card-region">United States</span>
-                                                                  <span class="nri-card-tagline">Secure Smart Wealth</span> -->
+                                                                                                                  <span class="nri-card-tagline">Secure Smart Wealth</span> -->
                                         </div>
                                         <!-- <div class="nri-card-expand">
-                                                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                                                            <line x1="7" y1="17" x2="17" y2="7"></line>
-                                                            <polyline points="7 7 17 7 17 17"></polyline>
-                                                          </svg>
-                                                        </div> -->
+                                                                                                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                                                                                                    <line x1="7" y1="17" x2="17" y2="7"></line>
+                                                                                                    <polyline points="7 7 17 7 17 17"></polyline>
+                                                                                                  </svg>
+                                                                                                </div> -->
                                     </div>
 
                                     <div class="nri-card" tabindex="0">
@@ -1369,11 +1214,11 @@
                                             <!-- <span class="nri-card-tagline">Preserve Family Legacy</span> -->
                                         </div>
                                         <!-- <div class="nri-card-expand">
-                                                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                                                            <line x1="7" y1="17" x2="17" y2="7"></line>
-                                                            <polyline points="7 7 17 7 17 17"></polyline>
-                                                          </svg>
-                                                        </div> -->
+                                                                                                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                                                                                                    <line x1="7" y1="17" x2="17" y2="7"></line>
+                                                                                                    <polyline points="7 7 17 7 17 17"></polyline>
+                                                                                                  </svg>
+                                                                                                </div> -->
                                     </div>
 
                                     <div class="nri-card" tabindex="0">
@@ -1383,11 +1228,11 @@
                                             <!-- <span class="nri-card-tagline">Secure Land Holdings</span> -->
                                         </div>
                                         <!-- <div class="nri-card-expand">
-                                                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                                                            <line x1="7" y1="17" x2="17" y2="7"></line>
-                                                            <polyline points="7 7 17 7 17 17"></polyline>
-                                                          </svg>
-                                                        </div> -->
+                                                                                                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                                                                                                    <line x1="7" y1="17" x2="17" y2="7"></line>
+                                                                                                    <polyline points="7 7 17 7 17 17"></polyline>
+                                                                                                  </svg>
+                                                                                                </div> -->
                                     </div>
 
                                 </div>
@@ -1402,36 +1247,39 @@
                     <div class="cf-contact-panel">
                         <div class="container">
                             <div class="cf-grid">
-                                <div
-                                    class="cf-info">
-                                    <!-- <span class="cf-tag">(Contact)</span> -->
-                                    <h2 class="cf-heading">Start Your Real Investment</h2>
+                                <div class="cf-info">
+                                    <span class="cf-accent-bar" aria-hidden="true"></span>
+                                    <h2 class="cf-heading">Start Your Real
+                                        <span class="cf-heading-accent">Investment</span>
+                                        Journey Today</h2>
+                                    <p class="cf-subtext">Take the first step towards secure returns, premium living, and a better tomorrow.</p>
+                                    <span class="cf-accent-bar cf-accent-bar-sm" aria-hidden="true"></span>
 
                                     <div class="cf-contact-list">
                                         <div class="cf-contact-item">
-                                            <span class="cf-contact-icon">
-                                                <svg viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-                                            </span>
-                                            <div class="cf-contact-text">
-                                                <h4>Email</h4>
-                                                <p>yoshitha.chandramouli@gmail.com</p>
-                                            </div>
-                                        </div>
-                                        <div class="cf-contact-item">
-                                            <span class="cf-contact-icon">
+                                            <span class="cf-contact-icon cf-icon-green">
                                                 <svg viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
                                             </span>
                                             <div class="cf-contact-text">
-                                                <h4>Telephone</h4>
+                                                <h4>Call Us</h4>
                                                 <p>+91 9533839165</p>
                                             </div>
                                         </div>
                                         <div class="cf-contact-item">
-                                            <span class="cf-contact-icon">
+                                            <span class="cf-contact-icon cf-icon-blue">
+                                                <svg viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                                            </span>
+                                            <div class="cf-contact-text">
+                                                <h4>Email Us</h4>
+                                                <p>yoshitha.chandramouli@gmail.com</p>
+                                            </div>
+                                        </div>
+                                        <div class="cf-contact-item">
+                                            <span class="cf-contact-icon cf-icon-yellow">
                                                 <svg viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
                                             </span>
                                             <div class="cf-contact-text">
-                                                <h4>Office</h4>
+                                                <h4>Visit Our Office</h4>
                                                 <p>H.No 20, Plot No 135, 60/P/135, Mathrusree Nagar, Serilingampalle (M), Hyderabad, Telangana 500049</p>
                                             </div>
                                         </div>
@@ -1463,26 +1311,48 @@
                                 <div class="cf-form-panel">
                                     <form id="contact-form" action="contact_validate.php" method="POST" novalidate>
                                         <div class="form-group">
-                                            <label for="form-name" class="form-label">Name</label>
-                                            <input type="text" id="form-name" name="name" class="form-input" placeholder="John Doe" required>
+                                            <label for="form-name" class="form-label">Full Name</label>
+                                            <div class="form-input-wrap">
+                                                <span class="form-input-icon cf-icon-blue">
+                                                    <svg viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                                                </span>
+                                                <input type="text" id="form-name" name="name" class="form-input" placeholder="Enter your full name" required>
+                                            </div>
                                             <span class="form-error-msg">Please enter your name.</span>
                                         </div>
 
                                         <div class="form-group">
-                                            <label for="form-email" class="form-label">E-mail</label>
-                                            <input type="email" id="form-email" name="email" class="form-input" placeholder="johndoe@gmail.com" required>
+                                            <label for="form-email" class="form-label">Email Address</label>
+                                            <div class="form-input-wrap">
+                                                <span class="form-input-icon cf-icon-blue">
+                                                    <svg viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                                                </span>
+                                                <input type="email" id="form-email" name="email" class="form-input" placeholder="Enter your email address" required>
+                                            </div>
                                             <span class="form-error-msg">Please enter a valid email address.</span>
                                         </div>
 
                                         <div class="form-group">
-                                            <label for="form-phone" class="form-label">Phone (optional)</label>
-                                            <input type="tel" id="form-phone" name="phone" class="form-input" placeholder="+91 98450 12345">
+                                            <label for="form-phone" class="form-label">Phone Number
+                                                <span class="cf-label-optional">(Optional)</span>
+                                            </label>
+                                            <div class="form-input-wrap">
+                                                <span class="form-input-icon cf-icon-green">
+                                                    <svg viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                                                </span>
+                                                <input type="tel" id="form-phone" name="phone" class="form-input" placeholder="Enter your phone number">
+                                            </div>
                                             <span class="form-error-msg">Please enter your phone number.</span>
                                         </div>
 
                                         <div class="form-group">
                                             <label for="form-message" class="form-label">Message</label>
-                                            <textarea id="form-message" name="message" class="form-input" rows="5" placeholder="Tell us about your plot size and location preference..." required></textarea>
+                                            <div class="form-input-wrap form-input-wrap-textarea">
+                                                <span class="form-input-icon cf-icon-yellow">
+                                                    <svg viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                                                </span>
+                                                <textarea id="form-message" name="message" class="form-input" rows="4" placeholder="Tell us about your plot size and location preference..." required></textarea>
+                                            </div>
                                             <span class="form-error-msg">Please write a brief message.</span>
                                         </div>
 
@@ -1495,13 +1365,57 @@
                                         <span class="cf-form-note hidden" id="form-submit-error">Something went wrong while sending your message. Please try again.</span>
 
                                         <button type="submit" class="cf-submit-btn" id="cf-submit-btn">
-                                            <span class="btn-label">Submit</span>
+                                            <span class="btn-label">Send Enquiry</span>
                                             <svg class="btn-arrow" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                                                 <line x1="5" y1="12" x2="19" y2="12"></line>
                                                 <polyline points="12 5 19 12 12 19"></polyline>
                                             </svg>
                                         </button>
+
+                                        <p class="cf-privacy-note">
+                                            <svg viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                                            Your information is safe with us. We respect your privacy.
+                                        </p>
                                     </form>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="cf-trust-strip">
+                            <div class="cf-trust-item">
+                                <span class="cf-trust-icon cf-icon-blue">
+                                    <svg viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                                </span>
+                                <div class="cf-trust-text">
+                                    <h5>Secure Investment</h5>
+                                    <p>100% Transparent</p>
+                                </div>
+                            </div>
+                            <div class="cf-trust-item">
+                                <span class="cf-trust-icon cf-icon-green">
+                                    <svg viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+                                </span>
+                                <div class="cf-trust-text">
+                                    <h5>High Returns</h5>
+                                    <p>Better Tomorrow</p>
+                                </div>
+                            </div>
+                            <div class="cf-trust-item">
+                                <span class="cf-trust-icon cf-icon-yellow">
+                                    <svg viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                                </span>
+                                <div class="cf-trust-text">
+                                    <h5>Trusted by 1000+</h5>
+                                    <p>Happy Families</p>
+                                </div>
+                            </div>
+                            <div class="cf-trust-item">
+                                <span class="cf-trust-icon cf-icon-navy">
+                                    <svg viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/></svg>
+                                </span>
+                                <div class="cf-trust-text">
+                                    <h5>Expert Support</h5>
+                                    <p>Always Here to Help</p>
                                 </div>
                             </div>
                         </div>
@@ -1525,14 +1439,14 @@
                                     <img src="Assets/Img/logo-white 1.svg" alt="Yoshitha's Real Rise Logo" class="cf-footer-logo">
                                     <p>Redefining luxury living and plotting infrastructure in partnership with Yoshitha Infra.</p>
                                     <!-- <a href="#contact" class="cf-footer-cta">
-                                                    <span>Get in Touch</span>
-                                                    <span class="cf-footer-cta-icon">
-                                                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                                                        <line x1="5" y1="12" x2="19" y2="12"></line>
-                                                        <polyline points="12 5 19 12 12 19"></polyline>
-                                                      </svg>
-                                                    </span>
-                                                  </a> -->
+                                                                                        <span>Get in Touch</span>
+                                                                                        <span class="cf-footer-cta-icon">
+                                                                                          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                                                                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                                                                                            <polyline points="12 5 19 12 12 19"></polyline>
+                                                                                          </svg>
+                                                                                        </span>
+                                                                                      </a> -->
                                 </div>
 
                                 <nav class="cf-footer-cols" aria-label="Footer Navigation">
@@ -1615,8 +1529,9 @@
         <!-- Vanta Birds Initialization -->
         <script>
             (function initVantaBirds() {
-                if (typeof VANTA === 'undefined' || typeof THREE === 'undefined')
+                if (typeof VANTA === 'undefined' || typeof THREE === 'undefined') 
                     return;
+                
 
 
                 VANTA.BIRDS({

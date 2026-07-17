@@ -218,12 +218,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Dismiss overlay — continue on to the real thank-you page
   inboxClose.addEventListener('click', () => {
-    window.location.href = 'thank-you-chandramouli.php';
+    window.location.href = 'thank-you-sridevi.php';
   });
 
   inboxOverlay.addEventListener('click', (e) => {
     if (e.target === inboxOverlay) {
-      window.location.href = 'thank-you-chandramouli.php';
+      window.location.href = 'thank-you-sridevi.php';
     }
   });
 });

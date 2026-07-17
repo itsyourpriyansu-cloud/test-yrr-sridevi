@@ -27,7 +27,7 @@ $formEmail = 'contactforum@yoshithainfra.in';
 // $emailCc = 'keshanth169@gmail.com';
 //$emailCc = 'shiva.krishna22@gmail.com';
 //$emailBcc = 'sathish@gigaqwal.com';
-$toEmail = 'tharunkola450@gmail.com'; //yoshitha.chandramouli@gmail.com
+$toEmail = 'kapalasri@gmail.com';
 $statusMsg = 'An error occurred. Please try again.';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -61,7 +61,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <body>
             <div class='jumbotron card card-body' style='box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;'>
             <h2>New Inquiry From Website</h2>
-            <p>Dear Chandramouli,</p>
+            <p>Dear Yoshitha Sridevi,</p>
             <p>We have received your inquiry and will get back to you as soon as possible.</p>
             <p>Here are the details you provided:</p>
             <ul>

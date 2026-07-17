@@ -12,8 +12,8 @@ error_reporting(E_ALL);
 header('Content-Type: application/json');
 
 
-$siteKey = '6Le5gNAsAAAAABqVmMyneZdn4fNI83hMDkIDFtU6';    //6LdOsfErAAAAAFZQH0L1Vid2_ZbQ3lKyZd5pQzbm
-$secretKey = '6Le5gNAsAAAAAIbwihKwL-ibfSOGsT4J-p_0WntD';  //6LdOsfErAAAAAN_N3fZL5C997AxjFjpAw7H6GQLp
+$siteKey = '6Lee4dssAAAAABwQcN6WhruntoxwP7SGx4sDg5N5';    //6LdOsfErAAAAAFZQH0L1Vid2_ZbQ3lKyZd5pQzbm
+$secretKey = '6Lee4dssAAAAANyDHBPodI7YGTMK1ntrCag8SfFT';  //6LdOsfErAAAAAN_N3fZL5C997AxjFjpAw7H6GQLp
 
 
 

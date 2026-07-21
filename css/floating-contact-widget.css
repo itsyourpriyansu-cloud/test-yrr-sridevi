@@ -1,0 +1,393 @@
+/* ==========================================================================
+   FLOATING CONTACT WIDGET
+   Fixed bottom-right toggle that expands into Call / WhatsApp / Facebook /
+   Instagram quick-contact buttons. Fully self-contained — every selector is
+   scoped under .floating-contact-widget so it cannot collide with the
+   site's existing styles.
+   ========================================================================== */
+
+.floating-contact-widget {
+  position: fixed;
+  right: var(--fcw-right, 24px);
+  /* --fcw-bottom is set by JS when the third-party chat bubble is detected,
+     so this widget stacks 12px above it instead of overlapping. */
+  bottom: var(--fcw-bottom, 100px);
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  /* The wrapper itself must never block clicks on the page underneath;
+     only the actual buttons inside it are interactive. */
+  pointer-events: none;
+}
+
+.floating-contact-widget * {
+  box-sizing: border-box;
+}
+
+/* ─── Stack of social buttons (rendered above the toggle) ─── */
+.floating-contact-widget__stack {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.floating-contact-widget__item {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 12px;
+  pointer-events: none;
+}
+
+/* ─── Tooltip / label shown to the left of each social button ─── */
+.floating-contact-widget__tooltip {
+  background: #ffffff;
+  color: #239f58;
+  font-family: var(--font-secondary, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif);
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1;
+  white-space: nowrap;
+  padding: 8px 12px;
+  border-radius: 8px !important;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.16) !important;
+  opacity: 0;
+  transform: translateX(6px);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.floating-contact-widget__item:hover .floating-contact-widget__tooltip,
+.floating-contact-widget__link:focus-visible + .floating-contact-widget__tooltip,
+.floating-contact-widget__link:focus-visible ~ .floating-contact-widget__tooltip {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Tooltip markup is placed before the button in the DOM for focus order,
+   but visually it must sit to the LEFT, so we reverse the flex order. */
+.floating-contact-widget__tooltip {
+  order: 1;
+}
+
+.floating-contact-widget__link {
+  order: 2;
+}
+
+@media (hover: none) {
+  /* Touch devices: don't rely on hover, tooltip stays hidden — the
+     accessible name still comes through via aria-label. */
+  .floating-contact-widget__tooltip {
+    display: none;
+  }
+}
+
+.floating-contact-widget__link {
+  width: 54px;
+  height: 54px;
+  min-width: 48px;
+  min-height: 48px;
+  border-radius: 50% !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  flex-shrink: 0;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.18) !important;
+  transform: translateY(18px) scale(0.82);
+  opacity: 0;
+  pointer-events: none;
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+              opacity 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+              box-shadow 0.25s ease;
+}
+
+.floating-contact-widget__link svg {
+  width: 24px !important;
+  height: 24px !important;
+  fill: #ffffff;
+}
+
+.floating-contact-widget__link:hover {
+  transform: translateY(0) scale(1.06);
+}
+
+.floating-contact-widget__link:active {
+  transform: translateY(0) scale(0.96);
+}
+
+.floating-contact-widget__link:focus-visible {
+  outline: 2px solid #ffffff;
+  outline-offset: 3px;
+  box-shadow: 0 0 0 4px rgba(10, 54, 92, 0.45), 0 10px 24px rgba(0, 0, 0, 0.18) !important;
+}
+
+/* Individual brand colors */
+.floating-contact-widget__link--phone {
+  background: #22c55e;
+}
+
+.floating-contact-widget__link--whatsapp {
+  background: #25d366;
+}
+
+.floating-contact-widget__link--facebook {
+  background: #1877f2;
+}
+
+.floating-contact-widget__link--twitter {
+  background: #000000;
+}
+
+.floating-contact-widget__link--instagram {
+  background: linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045);
+}
+
+.floating-contact-widget__link--linkedin {
+  background: #0077b5;
+}
+
+.floating-contact-widget__link--youtube {
+  background: #ff0000;
+}
+
+/* ─── Open state: reveal + stagger the seven buttons ─── */
+.floating-contact-widget.is-open .floating-contact-widget__link {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  pointer-events: auto;
+}
+
+.floating-contact-widget.is-open .floating-contact-widget__item:nth-child(1) .floating-contact-widget__link { transition-delay: 60ms; }
+.floating-contact-widget.is-open .floating-contact-widget__item:nth-child(2) .floating-contact-widget__link { transition-delay: 115ms; }
+.floating-contact-widget.is-open .floating-contact-widget__item:nth-child(3) .floating-contact-widget__link { transition-delay: 170ms; }
+.floating-contact-widget.is-open .floating-contact-widget__item:nth-child(4) .floating-contact-widget__link { transition-delay: 225ms; }
+.floating-contact-widget.is-open .floating-contact-widget__item:nth-child(5) .floating-contact-widget__link { transition-delay: 280ms; }
+.floating-contact-widget.is-open .floating-contact-widget__item:nth-child(6) .floating-contact-widget__link { transition-delay: 335ms; }
+.floating-contact-widget.is-open .floating-contact-widget__item:nth-child(7) .floating-contact-widget__link { transition-delay: 390ms; }
+
+/* On close, collapse fastest-first (top item first) so the stack folds
+   down toward the toggle instead of all fading at once. */
+.floating-contact-widget__item:nth-child(7) .floating-contact-widget__link { transition-delay: 0ms; }
+.floating-contact-widget__item:nth-child(6) .floating-contact-widget__link { transition-delay: 30ms; }
+.floating-contact-widget__item:nth-child(5) .floating-contact-widget__link { transition-delay: 60ms; }
+.floating-contact-widget__item:nth-child(4) .floating-contact-widget__link { transition-delay: 90ms; }
+.floating-contact-widget__item:nth-child(3) .floating-contact-widget__link { transition-delay: 120ms; }
+.floating-contact-widget__item:nth-child(2) .floating-contact-widget__link { transition-delay: 150ms; }
+.floating-contact-widget__item:nth-child(1) .floating-contact-widget__link { transition-delay: 180ms; }
+
+/* ─── Bottom row: "Hide" label + main toggle button ─── */
+.floating-contact-widget__row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  pointer-events: none;
+}
+
+.floating-contact-widget__hide {
+  background: #ffffff;
+  color: #374151;
+  font-family: var(--font-secondary, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif);
+  font-size: 16px;
+  font-weight: 600;
+  height: 38px;
+  padding: 0 16px;
+  border: none;
+  border-radius: 12px !important;
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.16) !important;
+  opacity: 0;
+  transform: translateX(10px);
+  pointer-events: none;
+  transition: opacity 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.floating-contact-widget__hide:focus-visible {
+  outline: 2px solid #0a365c;
+  outline-offset: 2px;
+}
+
+.floating-contact-widget.is-open .floating-contact-widget__hide {
+  opacity: 1;
+  transform: translateX(0);
+  pointer-events: auto;
+  transition-delay: 120ms;
+}
+
+.floating-contact-widget__toggle {
+  position: relative;
+  width: 60px;
+  height: 60px;
+  min-width: 48px;
+  min-height: 48px;
+  border-radius: 50% !important;
+  border: none;
+  background: #239f58;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  flex-shrink: 0;
+  pointer-events: auto;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.22) !important;
+  transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.floating-contact-widget__toggle:hover {
+  transform: scale(1.05);
+}
+
+.floating-contact-widget__toggle:active {
+  transform: scale(0.96);
+}
+
+.floating-contact-widget__toggle:focus-visible {
+  outline: 2px solid #ffffff;
+  outline-offset: 3px;
+  box-shadow: 0 0 0 4px rgba(10, 54, 92, 0.45), 0 10px 30px rgba(0, 0, 0, 0.22) !important;
+}
+
+.floating-contact-widget__toggle svg {
+  width: 26px !important;
+  height: 26px !important;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-top: -13px;
+  margin-left: -13px;
+}
+
+.floating-contact-widget__icon-open,
+.floating-contact-widget__icon-close {
+  stroke: #ffffff;
+  fill: none;
+  transition: opacity 0.3s ease, transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.floating-contact-widget__icon-close {
+  opacity: 0;
+  transform: rotate(-45deg) scale(0.6);
+}
+
+.floating-contact-widget.is-open .floating-contact-widget__icon-open {
+  opacity: 0;
+  transform: rotate(45deg) scale(0.6);
+}
+
+.floating-contact-widget.is-open .floating-contact-widget__icon-close {
+  opacity: 1;
+  transform: rotate(0deg) scale(1);
+}
+
+/* One-time gentle pulse, triggered via a JS-added class after page load. */
+.floating-contact-widget__toggle.floating-contact-widget__toggle--pulse::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50% !important;
+  background: rgba(35, 159, 88, 0.35);
+  animation: floating-contact-widget-pulse 1.6s cubic-bezier(0.22, 1, 0.36, 1) 2;
+  pointer-events: none;
+}
+
+@keyframes floating-contact-widget-pulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.55;
+  }
+  100% {
+    transform: scale(1.9);
+    opacity: 0;
+  }
+}
+
+/* ─── Tablet / mobile ─── */
+@media (max-width: 768px) {
+  .floating-contact-widget {
+    right: 16px;
+    bottom: var(--fcw-bottom, calc(100px + env(safe-area-inset-bottom)));
+  }
+
+  .floating-contact-widget__toggle {
+    width: 58px;
+    height: 58px;
+  }
+
+  .floating-contact-widget__link {
+    width: 52px;
+    height: 52px;
+  }
+}
+
+/* Very short viewports: tighten the stack so it never runs off the top
+   of the screen. */
+@media (max-height: 560px) {
+  .floating-contact-widget__stack {
+    gap: 8px;
+    margin-bottom: 8px;
+  }
+
+  .floating-contact-widget__toggle {
+    width: 50px;
+    height: 50px;
+  }
+
+  .floating-contact-widget__link {
+    width: 44px;
+    height: 44px;
+  }
+
+  .floating-contact-widget__toggle svg {
+    width: 20px !important;
+    height: 20px !important;
+    margin-top: -10px;
+    margin-left: -10px;
+  }
+
+  .floating-contact-widget__link svg {
+    width: 20px !important;
+    height: 20px !important;
+  }
+}
+
+/* ─── Reduced motion: keep a simple show/hide, drop movement & stagger ─── */
+@media (prefers-reduced-motion: reduce) {
+  .floating-contact-widget__link,
+  .floating-contact-widget__hide,
+  .floating-contact-widget__icon-open,
+  .floating-contact-widget__icon-close,
+  .floating-contact-widget__toggle {
+    transition-duration: 0.01ms !important;
+    transition-delay: 0ms !important;
+    animation: none !important;
+  }
+
+  .floating-contact-widget__link {
+    transform: none;
+  }
+
+  .floating-contact-widget.is-open .floating-contact-widget__link {
+    transform: none;
+  }
+
+  .floating-contact-widget__hide {
+    transform: none;
+  }
+
+  .floating-contact-widget__icon-close {
+    transform: none;
+  }
+
+  .floating-contact-widget.is-open .floating-contact-widget__icon-open {
+    transform: none;
+  }
+
+  .floating-contact-widget__toggle--pulse::before {
+    display: none;
+  }
+}

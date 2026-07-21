@@ -462,11 +462,34 @@ document.addEventListener('DOMContentLoaded', () => {
   (function () {
     const sliderWrapper = document.getElementById('sg-slider-wrapper');
     const slides = document.querySelectorAll('.sg-slide');
+
+    if (!sliderWrapper || slides.length === 0) return;
+
+    // Single-video layout: skip slider/autoplay logic, just load the video
+    // and run a slow looping zoom on it.
+    if (slides.length === 1) {
+      const slide = slides[0];
+      const img = slide.querySelector('.sg-img');
+      if (img) {
+        const src = img.dataset.src;
+        if (src && img.getAttribute('src') !== src) {
+          img.src = src;
+        }
+        gsap.set(img, { scale: 1 });
+        gsap.to(img, {
+          scale: 1.05,
+          duration: 10,
+          yoyo: true,
+          repeat: -1,
+          ease: 'power1.inOut'
+        });
+      }
+      return;
+    }
+
     const prevBtn = document.getElementById('sg-prev-btn');
     const nextBtn = document.getElementById('sg-next-btn');
     const progressBar = document.getElementById('sg-progress-bar');
-    
-    if (!sliderWrapper || slides.length === 0) return;
 
     let currentIndex = 0;
     const totalSlides = slides.length;
@@ -647,6 +670,29 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!accordion) return;
 
     const items = accordion.querySelectorAll('.lo-item');
+    const visualImg = document.getElementById('lo-visual-img');
+
+    function setVisual(item, animate) {
+      if (!visualImg || !item.dataset.image) return;
+      if (visualImg.getAttribute('src') === item.dataset.image) return;
+
+      const swap = () => {
+        visualImg.src = item.dataset.image;
+        if (item.dataset.alt) visualImg.alt = item.dataset.alt;
+      };
+
+      if (animate) {
+        gsap.to(visualImg, {
+          opacity: 0, duration: 0.25, ease: 'power2.out',
+          onComplete: () => {
+            swap();
+            gsap.to(visualImg, { opacity: 1, duration: 0.35, ease: 'power2.out' });
+          }
+        });
+      } else {
+        swap();
+      }
+    }
 
     function openItem(item, animate) {
       const content = item.querySelector('.lo-item-content');
@@ -654,6 +700,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const header = item.querySelector('.lo-item-header');
       item.classList.add('is-open');
       header.setAttribute('aria-expanded', 'true');
+      setVisual(item, animate);
 
       if (animate) {
         gsap.to(content, { height: 'auto', duration: 0.6, ease: 'power3.inOut' });

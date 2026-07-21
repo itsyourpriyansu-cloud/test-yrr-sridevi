@@ -375,18 +375,21 @@
                                 </p>
                             </div>
 
-                            <a href="https://www.instagram.com/reel/Dap0x3ADTZl/" target="_blank" rel="noopener" class="about-photo-card about-reel-wrap" aria-label="View this reel on Instagram">
-                                <video src="Assets/Video/instavideo.mp4" autoplay muted loop playsinline preload="metadata"></video>
-                                <div class="about-video-play-overlay">
-                                    <div class="play-pulse-ring"></div>
-                                    <div class="play-btn-circle">
-                                        <svg viewbox="0 0 24 24" fill="currentColor">
-                                            <path d="M8 5v14l11-7z"/>
-                                        </svg>
-                                    </div>
-                                    <span class="play-badge">WATCH REEL</span>
-                                </div>
-                            </a>
+                            <div class="about-photo-card about-reel-wrap" data-video-card>
+                                <video src="Assets/Video/instavideo.mp4" autoplay muted loop playsinline preload="metadata" data-about-video></video>
+                                <button type="button" class="about-video-mute-btn is-muted" data-mute-btn aria-label="Unmute video">
+                                    <svg class="icon-unmuted" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M11 5 6 9H3v6h3l5 4V5z" fill="currentColor" stroke="none"/>
+                                        <path d="M15.5 8.5a5 5 0 0 1 0 7"/>
+                                        <path d="M18 6a9 9 0 0 1 0 12"/>
+                                    </svg>
+                                    <svg class="icon-muted" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M11 5 6 9H3v6h3l5 4V5z" fill="currentColor" stroke="none"/>
+                                        <line x1="16" y1="9" x2="21" y2="14"/>
+                                        <line x1="21" y1="9" x2="16" y2="14"/>
+                                    </svg>
+                                </button>
+                            </div>
 
                             <div class="about-points">
                                 <div class="about-point-card">

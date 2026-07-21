@@ -1487,4 +1487,30 @@ document.addEventListener('DOMContentLoaded', () => {
     ScrollTrigger.refresh();
   });
 
+  // ── About Section Reel: autoplay with custom mute control ──
+  (function initAboutReel() {
+    const card = document.querySelector('[data-video-card]');
+    if (!card) return;
+
+    const video = card.querySelector('[data-about-video]');
+    const muteBtn = card.querySelector('[data-mute-btn]');
+
+    video.addEventListener('volumechange', () => {
+      muteBtn.classList.toggle('is-muted', video.muted);
+      muteBtn.setAttribute('aria-label', video.muted ? 'Unmute video' : 'Mute video');
+    });
+
+    muteBtn.addEventListener('click', () => {
+      video.muted = !video.muted;
+    });
+
+    video.addEventListener('click', () => {
+      if (video.paused) {
+        video.play();
+      } else {
+        video.pause();
+      }
+    });
+  })();
+
 });

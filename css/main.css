@@ -655,87 +655,49 @@ header.scrolled .logo-img.logo-sticky {
   transform: scale(1.04);
 }
 
-/* Play button overlay */
-.about-video-play-overlay {
+/* Custom mute/unmute control, always available while the reel autoplays */
+.about-video-mute-btn {
   position: absolute;
-  inset: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  background: rgba(8, 26, 21, 0.25);
-  transition: background 0.3s ease;
-  z-index: 2;
-}
-
-.about-reel-wrap:hover .about-video-play-overlay {
-  background: rgba(8, 26, 21, 0.4);
-}
-
-.play-btn-circle {
-  width: 72px;
-  height: 72px;
+  right: 16px;
+  bottom: 16px;
+  width: 40px;
+  height: 40px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.92);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--color-primary);
-  box-shadow: 0 10px 25px rgba(249, 176, 18, 0.3);
-  position: relative;
-  z-index: 3;
-  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), background-color 0.3s ease;
-}
-
-.play-btn-circle svg {
-  width: 26px;
-  height: 26px;
-  transform: translateX(2px);
-}
-
-.about-reel-wrap:hover .play-btn-circle {
-  transform: scale(1.1);
-  background: var(--color-yellow);
-  color: #000000;
-}
-
-.play-pulse-ring {
-  position: absolute;
-  width: 110px;
-  height: 110px;
-  border-radius: 50%;
-  border: 1.5px solid rgba(255, 255, 255, 0.25);
-  animation: play-ring-pulse 2s infinite;
-  pointer-events: none;
-  z-index: 1;
-}
-
-@keyframes play-ring-pulse {
-  0% {
-    transform: scale(0.6);
-    opacity: 1;
-  }
-  100% {
-    transform: scale(1.2);
-    opacity: 0;
-  }
-}
-
-.play-badge {
-  margin-top: 1.25rem;
-  font-family: var(--font-primary);
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.25em;
+  background: rgba(8, 26, 21, 0.5);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
   color: #ffffff;
-  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
-  opacity: 0.85;
-  transition: opacity 0.3s ease, letter-spacing 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 4;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+  transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
 }
 
-.about-reel-wrap:hover .play-badge {
-  opacity: 1;
-  letter-spacing: 0.3em;
+.about-video-mute-btn:hover {
+  transform: scale(1.08);
+  background: rgba(8, 26, 21, 0.75);
+  border-color: rgba(255, 255, 255, 0.32);
+}
+
+.about-video-mute-btn svg {
+  width: 19px;
+  height: 19px;
+}
+
+.about-video-mute-btn .icon-muted {
+  display: none;
+}
+
+.about-video-mute-btn.is-muted .icon-unmuted {
+  display: none;
+}
+
+.about-video-mute-btn.is-muted .icon-muted {
+  display: block;
 }
 
 .about-content {

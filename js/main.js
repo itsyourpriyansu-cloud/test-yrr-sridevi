@@ -32,15 +32,28 @@ document.addEventListener('DOMContentLoaded', () => {
       if (!target) return;
 
       e.preventDefault();
-      window.__lenis && window.__lenis.scrollTo(target, {
-        offset: HEADER_OFFSET,
-        duration: 1.2,
-        easing: (t) => 1 - Math.pow(1 - t, 3), // easeOutCubic — premium, not sluggish
-      });
 
-      // Auto-close mobile menu if it was open
-      if (mobileMenu && mobileMenu.classList.contains('active') && mobileToggle) {
+      // Close the mobile menu first (this also resumes Lenis).
+      const wasMenuOpen = mobileMenu && mobileMenu.classList.contains('active');
+      if (wasMenuOpen && mobileToggle) {
         mobileToggle.click();
+      }
+
+      // If the menu was open, Lenis was paused. Give it one animation frame
+      // to fully resume before issuing scrollTo, otherwise the scroll is
+      // swallowed while Lenis is still in the stopped state.
+      const doScroll = () => {
+        window.__lenis && window.__lenis.scrollTo(target, {
+          offset: HEADER_OFFSET,
+          duration: 1.2,
+          easing: (t) => 1 - Math.pow(1 - t, 3), // easeOutCubic — premium, not sluggish
+        });
+      };
+
+      if (wasMenuOpen) {
+        requestAnimationFrame(doScroll);
+      } else {
+        doScroll();
       }
     });
   });
@@ -129,14 +142,6 @@ document.addEventListener('DOMContentLoaded', () => {
       if (e.key === 'Escape' && mobileMenu.classList.contains('active')) {
         toggleMenu();
       }
-    });
-
-    mobileLinks.forEach(link => {
-      link.addEventListener('click', () => {
-        if (mobileMenu.classList.contains('active')) {
-          toggleMenu();
-        }
-      });
     });
   }
 

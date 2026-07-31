@@ -11,7 +11,39 @@
         <meta
         name="author" content="Yoshitha's Real Rise Partners">
 
+        <!-- Open Graph -->
+        <meta property="og:type" content="website">
+        <meta property="og:site_name" content="Yoshitha's Real Rise">
+        <meta property="og:title" content="Yoshitha's Real Rise | Premium Real Estate Partners">
+        <meta property="og:description" content="Redefining luxury living and plotting infrastructure in partnership with Yoshitha Infra. Explore our premium plots, modern luxury villas, and smart community spaces.">
+        <meta property="og:image" content="Assets/Img/sridevi-yr.png">
+
+        <!-- Twitter Card -->
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:title" content="Yoshitha's Real Rise | Premium Real Estate Partners">
+        <meta name="twitter:description" content="Redefining luxury living and plotting infrastructure in partnership with Yoshitha Infra. Explore our premium plots, modern luxury villas, and smart community spaces.">
+        <meta name="twitter:image" content="Assets/Img/sridevi-yr.png">
+
+        <!-- JSON-LD Structured Data -->
+        <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "RealEstateAgent",
+            "name": "Yoshitha's Real Rise Partners",
+            "description": "Redefining luxury living and plotting infrastructure in partnership with Yoshitha Infra. Explore our premium plots, modern luxury villas, and smart community spaces.",
+            "areaServed": "Shadnagar, Hyderabad",
+            "sameAs": [
+                "https://www.facebook.com/YoshithaSridevikapalavayi",
+                "https://x.com/yoshithasridevi",
+                "https://www.instagram.com/YoshithaSridevikapalavayi",
+                "https://www.linkedin.com/company/yoshithasridevikapalavayi/",
+                "https://www.youtube.com/@YoshithaSridevikapalavayi"
+            ]
+        }
+        </script>
+
         <!-- Satoshi Font (Display & Headings) -->
+        <link rel="preconnect" href="https://api.fontshare.com" crossorigin>
         <link
         href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,700,900&display=swap" rel="stylesheet">
 
@@ -21,6 +53,14 @@
         <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
+        <!-- Preload LCP hero image so the browser fetches it at the highest priority.
+             imagesrcset/imagesizes let the preload pick the same responsive candidate
+             the <img> below will use, instead of always fetching the full 3840w original. -->
+        <link rel="preload" as="image" href="Assets/Img/sridevi-yr.png"
+              imagesrcset="Assets/Img/sridevi-yr-640w.png 640w, Assets/Img/sridevi-yr-960w.png 960w, Assets/Img/sridevi-yr-1280w.png 1280w, Assets/Img/sridevi-yr-1920w.png 1920w, Assets/Img/sridevi-yr-2560w.png 2560w, Assets/Img/sridevi-yr.png 3840w"
+              imagesizes="100vw"
+              fetchpriority="high">
+
         <!-- Stylesheets -->
         <link rel="stylesheet" href="css/lenis.css?v=85">
         <link rel="stylesheet" href="css/main.css?v=102">
@@ -28,12 +68,21 @@
         <script>
             (function (w, d) {
                 w.CollectId = "69b7d3d7510238cce9d1523e";
-                var h = d.head || d.getElementsByTagName("head")[0];
-                var s = d.createElement("script");
-                s.setAttribute("type", "text/javascript");
-                s.async = true;
-                s.setAttribute("src", "https://collectcdn.com/launcher.js");
-                h.appendChild(s);
+                function loadChatWidget() {
+                    var h = d.head || d.getElementsByTagName("head")[0];
+                    var s = d.createElement("script");
+                    s.setAttribute("type", "text/javascript");
+                    s.async = true;
+                    s.setAttribute("src", "https://collectcdn.com/launcher.js");
+                    h.appendChild(s);
+                }
+                // Chat widget isn't needed for first paint — load it once the
+                // page has finished loading so it doesn't compete with critical assets.
+                if (d.readyState === "complete") {
+                    loadChatWidget();
+                } else {
+                    w.addEventListener("load", loadChatWidget);
+                }
             })(window, document);
         </script>
 
@@ -47,8 +96,8 @@
         <header>
             <div class="nav-wrapper">
                 <a href="index.html" class="logo-link" aria-label="Yoshitha's Real Rise Home">
-                    <img src="Assets/Img/logo-white 1.svg" alt="Yoshitha's Real Rise Logo" class="logo-img logo-normal">
-                    <img src="Assets/Img/Lofo-infra.webp" alt="Yoshitha's Real Rise Logo" class="logo-img logo-sticky">
+                    <img src="Assets/Img/logo-white 1.svg" alt="Yoshitha's Real Rise Logo" class="logo-img logo-normal" decoding="async">
+                    <img src="Assets/Img/Lofo-infra.webp" alt="Yoshitha's Real Rise Logo" class="logo-img logo-sticky" width="200" height="56" decoding="async">
                 </a>
 
                 <!-- Desktop Nav links -->
@@ -104,7 +153,10 @@
                 class="hero" id="hero">
                 <!-- Background image of premium real estate executive -->
                 <img
-                src="Assets/Img/sridevi-yr.png" alt="Yoshitha Real Rise Executive" class="hero-bg-image">
+                src="Assets/Img/sridevi-yr.png"
+                srcset="Assets/Img/sridevi-yr-640w.png 640w, Assets/Img/sridevi-yr-960w.png 960w, Assets/Img/sridevi-yr-1280w.png 1280w, Assets/Img/sridevi-yr-1920w.png 1920w, Assets/Img/sridevi-yr-2560w.png 2560w, Assets/Img/sridevi-yr.png 3840w"
+                sizes="100vw"
+                alt="Yoshitha Real Rise Executive" class="hero-bg-image" width="3840" height="2160" fetchpriority="high" decoding="async">
                 <!-- <div class="hero-video-overlay"></div> -->
 
                 <div class="container hero-video-container">
@@ -361,7 +413,7 @@
 
                 <!-- ABOUT SECTION -->
                 <section class="about" id="about">
-                    <img src="Assets/Img/bg-img-about.webp" alt="Senior Real Estate Partner representing Yoshitha Infra" class="about-bg-image" loading="lazy">
+                    <img src="Assets/Img/bg-img-about.webp" alt="Senior Real Estate Partner representing Yoshitha Infra" class="about-bg-image" loading="lazy" decoding="async" width="3840" height="2160">
                     <div class="about-bg-glow"></div>
                     <div class="container">
                         <div class="about-grid">
@@ -376,7 +428,7 @@
                             </div>
 
                             <div class="about-photo-card about-reel-wrap" data-video-card>
-                                <video src="Assets/Video/instavideo.mp4" autoplay muted loop playsinline preload="metadata" data-about-video></video>
+                                <video data-src="Assets/Video/instavideo.mp4" muted loop playsinline preload="none" data-about-video></video>
                                 <button type="button" class="about-video-mute-btn is-muted" data-mute-btn aria-label="Unmute video">
                                     <svg class="icon-unmuted" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                         <path d="M11 5 6 9H3v6h3l5 4V5z" fill="currentColor" stroke="none"/>
@@ -456,7 +508,7 @@
                             <!-- Left Column: Large Image Card -->
                             <div class="feature-image-cover-card">
                                 <div class="card-image-wrap">
-                                    <img src="Assets/Amenities/community-aerial-view.webp" alt="Premium Gated Community Plots" loading="lazy">
+                                    <img src="Assets/Amenities/community-aerial-view.webp" alt="Premium Gated Community Plots" loading="lazy" decoding="async" width="1000" height="700">
                                 </div>
                                 <div class="features-image-overlay"></div>
                                 <div class="features-image-content">
@@ -616,7 +668,7 @@
                                 <!-- Card 1 -->
                                 <div class="si-card" data-amenity-index="0" tabindex="0" role="button" aria-label="View Avenue Plantations gallery">
                                     <div class="si-card-img-wrap">
-                                        <img src="Assets/Amenities/avenue-plantation.webp" alt="Avenue Plantations" class="si-card-img" loading="lazy">
+                                        <img src="Assets/Amenities/avenue-plantation.webp" alt="Avenue Plantations" class="si-card-img" loading="lazy" decoding="async" width="370" height="510">
                                         <div class="si-card-overlay">
                                             <span class="si-card-view-icon">
                                                 <svg width="15" height="15" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -638,7 +690,7 @@
                                 <!-- Card 2 -->
                                 <div class="si-card" data-amenity-index="1" tabindex="0" role="button" aria-label="View Central Park with Water Body gallery">
                                     <div class="si-card-img-wrap">
-                                        <img src="Assets/Amenities/central-park.webp" alt="Central Park with Water Body" class="si-card-img" loading="lazy">
+                                        <img src="Assets/Amenities/central-park.webp" alt="Central Park with Water Body" class="si-card-img" loading="lazy" decoding="async" width="370" height="510">
                                         <div class="si-card-overlay">
                                             <span class="si-card-view-icon">
                                                 <svg width="15" height="15" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -660,7 +712,7 @@
                                 <!-- Card 3 -->
                                 <div class="si-card" data-amenity-index="2" tabindex="0" role="button" aria-label="View Kid's Play Zone gallery">
                                     <div class="si-card-img-wrap">
-                                        <img src="Assets/Amenities/children-playarea.webp" alt="Kid's Play Zone" class="si-card-img" loading="lazy">
+                                        <img src="Assets/Amenities/children-playarea.webp" alt="Kid's Play Zone" class="si-card-img" loading="lazy" decoding="async" width="370" height="510">
                                         <div class="si-card-overlay">
                                             <span class="si-card-view-icon">
                                                 <svg width="15" height="15" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -682,7 +734,7 @@
                                 <!-- Card 4 -->
                                 <div class="si-card" data-amenity-index="3" tabindex="0" role="button" aria-label="View Open Theatre gallery">
                                     <div class="si-card-img-wrap">
-                                        <img src="Assets/Amenities/open-theatre.webp" alt="Open Theatre" class="si-card-img" loading="lazy">
+                                        <img src="Assets/Amenities/open-theatre.webp" alt="Open Theatre" class="si-card-img" loading="lazy" decoding="async" width="370" height="510">
                                         <div class="si-card-overlay">
                                             <span class="si-card-view-icon">
                                                 <svg width="15" height="15" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -704,7 +756,7 @@
                                 <!-- Card 5 -->
                                 <div class="si-card" data-amenity-index="4" tabindex="0" role="button" aria-label="View Senior Citizen Park gallery">
                                     <div class="si-card-img-wrap">
-                                        <img src="Assets/Amenities/senior-citizens-park.webp" alt="Senior Citizen Park" class="si-card-img" loading="lazy">
+                                        <img src="Assets/Amenities/senior-citizens-park.webp" alt="Senior Citizen Park" class="si-card-img" loading="lazy" decoding="async" width="1000" height="700">
                                         <div class="si-card-overlay">
                                             <span class="si-card-view-icon">
                                                 <svg width="15" height="15" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -726,7 +778,7 @@
                                 <!-- Card 6 -->
                                 <div class="si-card" data-amenity-index="5" tabindex="0" role="button" aria-label="View Sports Zone gallery">
                                     <div class="si-card-img-wrap">
-                                        <img src="Assets/Amenities/sports.webp" alt="Sports Zone" class="si-card-img" loading="lazy">
+                                        <img src="Assets/Amenities/sports.webp" alt="Sports Zone" class="si-card-img" loading="lazy" decoding="async" width="370" height="510">
                                         <div class="si-card-overlay">
                                             <span class="si-card-view-icon">
                                                 <svg width="15" height="15" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -748,7 +800,7 @@
                                 <!-- Card 7 -->
                                 <div class="si-card" data-amenity-index="6" tabindex="0" role="button" aria-label="View Private Swimming Pool gallery">
                                     <div class="si-card-img-wrap">
-                                        <img src="Assets/Amenities/swimming-pool.webp" alt="Private Swimming Pool" class="si-card-img" loading="lazy">
+                                        <img src="Assets/Amenities/swimming-pool.webp" alt="Private Swimming Pool" class="si-card-img" loading="lazy" decoding="async" width="370" height="510">
                                         <div class="si-card-overlay">
                                             <span class="si-card-view-icon">
                                                 <svg width="15" height="15" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -770,7 +822,7 @@
                                 <!-- Card 8 -->
                                 <div class="si-card" data-amenity-index="7" tabindex="0" role="button" aria-label="View Site View Point gallery">
                                     <div class="si-card-img-wrap">
-                                        <img src="Assets/Amenities/community-aerial-view.webp" alt="Site View Point" class="si-card-img" loading="lazy">
+                                        <img src="Assets/Amenities/community-aerial-view.webp" alt="Site View Point" class="si-card-img" loading="lazy" decoding="async" width="1000" height="700">
                                         <div class="si-card-overlay">
                                             <span class="si-card-view-icon">
                                                 <svg width="15" height="15" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -792,7 +844,7 @@
                                 <!-- Card 9 -->
                                 <div class="si-card" data-amenity-index="8" tabindex="0" role="button" aria-label="View Herbal Garden gallery">
                                     <div class="si-card-img-wrap">
-                                        <img src="Assets/Amenities/garden-spot.webp" alt="Herbal Garden" class="si-card-img" loading="lazy">
+                                        <img src="Assets/Amenities/garden-spot.webp" alt="Herbal Garden" class="si-card-img" loading="lazy" decoding="async" width="370" height="510">
                                         <div class="si-card-overlay">
                                             <span class="si-card-view-icon">
                                                 <svg width="15" height="15" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -814,7 +866,7 @@
                                 <!-- Card 10 -->
                                 <div class="si-card" data-amenity-index="9" tabindex="0" role="button" aria-label="View Recreation Zone gallery">
                                     <div class="si-card-img-wrap">
-                                        <img src="Assets/Amenities/chill-out-spot.webp" alt="Recreation Zone" class="si-card-img" loading="lazy">
+                                        <img src="Assets/Amenities/chill-out-spot.webp" alt="Recreation Zone" class="si-card-img" loading="lazy" decoding="async" width="370" height="510">
                                         <div class="si-card-overlay">
                                             <span class="si-card-view-icon">
                                                 <svg width="15" height="15" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -836,7 +888,7 @@
                                 <!-- Card 11 -->
                                 <div class="si-card" data-amenity-index="10" tabindex="0" role="button" aria-label="View Project Junction gallery">
                                     <div class="si-card-img-wrap">
-                                        <img src="Assets/Amenities/sculpture-fountain-plaza.webp" alt="Project Junction" class="si-card-img" loading="lazy">
+                                        <img src="Assets/Amenities/sculpture-fountain-plaza.webp" alt="Project Junction" class="si-card-img" loading="lazy" decoding="async" width="1000" height="700">
                                         <div class="si-card-overlay">
                                             <span class="si-card-view-icon">
                                                 <svg width="15" height="15" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -874,7 +926,7 @@
                                 <!-- Slide 1 -->
                                 <div class="sg-slide active" data-index="0">
                                     <div class="sg-image-wrap">
-                                        <iframe class="sg-img" src="https://player.vimeo.com/video/1213510686?autoplay=1&muted=1&loop=1&background=1" data-src="https://player.vimeo.com/video/1213510686?autoplay=1&muted=1&loop=1&background=1" title="Vimeo Video" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen loading="lazy"></iframe>
+                                        <iframe class="sg-img" data-src="https://player.vimeo.com/video/1213510686?autoplay=1&muted=1&loop=1&background=1" title="Vimeo Video" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen loading="lazy"></iframe>
                                     </div>
                                     <div class="sg-overlay"></div>
 
@@ -911,7 +963,7 @@
                         <div class="lo-grid">
 
                             <div class="lo-visual">
-                                <img src="Assets/Img/bdl.webp" alt="Skyline of major landmarks near Real Rise by Yoshitha Infra" class="lo-visual-img" id="lo-visual-img" loading="lazy">
+                                <img src="Assets/Img/bdl.webp" srcset="Assets/Img/bdl-500w.webp 500w, Assets/Img/bdl-900w.webp 900w, Assets/Img/bdl-1400w.webp 1400w, Assets/Img/bdl.webp 3368w" sizes="(max-width: 1024px) 90vw, 700px" alt="Skyline of major landmarks near Real Rise by Yoshitha Infra" class="lo-visual-img" id="lo-visual-img" loading="lazy" decoding="async" width="3368" height="2239">
                             </div>
 
                             <div
@@ -1097,7 +1149,7 @@
                                     </div>
                                     <p class="tm-card-quote">"Yoshitha Infra has redefined property buying. Their focus on legal compliance, clear documentation, and landscape aesthetics is unmatched in the market."</p>
                                     <div class="tm-card-author">
-                                        <img src="Assets/Img/testimonial_aditya.webp" alt="Aditya Vardhan" class="tm-card-avatar" loading="lazy">
+                                        <img src="Assets/Img/testimonial_aditya.webp" srcset="Assets/Img/testimonial_aditya-96w.webp 96w, Assets/Img/testimonial_aditya-150w.webp 150w, Assets/Img/testimonial_aditya.webp 1024w" sizes="(max-width: 992px) 38px, 46px" alt="Aditya Vardhan" class="tm-card-avatar" loading="lazy" decoding="async" width="1024" height="1024">
                                         <div class="tm-author-info">
                                             <span class="tm-author-name">Aditya Vardhan</span>
                                             <span class="tm-author-role">Strategic Partner, Capital Prime</span>
@@ -1123,7 +1175,7 @@
                                     </div>
                                     <p class="tm-card-quote">"The bento grids outlining locations made choosing simple. Their transparency in plotting real values and providing instant confirmation receipts on site was amazing."</p>
                                     <div class="tm-card-author">
-                                        <img src="Assets/Img/testimonial_sravani.webp" alt="Sravani Prasad" class="tm-card-avatar" loading="lazy">
+                                        <img src="Assets/Img/testimonial_sravani.webp" srcset="Assets/Img/testimonial_sravani-96w.webp 96w, Assets/Img/testimonial_sravani-150w.webp 150w, Assets/Img/testimonial_sravani.webp 1024w" sizes="(max-width: 992px) 38px, 46px" alt="Sravani Prasad" class="tm-card-avatar" loading="lazy" decoding="async" width="1024" height="1024">
                                         <div class="tm-author-info">
                                             <span class="tm-author-name">Sravani Prasad</span>
                                             <span class="tm-author-role">Asset Investor, Tech Ventures</span>
@@ -1149,7 +1201,7 @@
                                     </div>
                                     <p class="tm-card-quote">"Excellent premium layouts with consistent spacing. Working alongside their agent team is like stepping straight into the future of luxury community infrastructure."</p>
                                     <div class="tm-card-author">
-                                        <img src="Assets/Img/testimonial_rohan.webp" alt="Rohan K. Naidu" class="tm-card-avatar" loading="lazy">
+                                        <img src="Assets/Img/testimonial_rohan.webp" srcset="Assets/Img/testimonial_rohan-96w.webp 96w, Assets/Img/testimonial_rohan-150w.webp 150w, Assets/Img/testimonial_rohan.webp 1024w" sizes="(max-width: 992px) 38px, 46px" alt="Rohan K. Naidu" class="tm-card-avatar" loading="lazy" decoding="async" width="1024" height="1024">
                                         <div class="tm-author-info">
                                             <span class="tm-author-name">Rohan K. Naidu</span>
                                             <span class="tm-author-role">Senior Architect, Decastructures</span>
@@ -1175,7 +1227,7 @@
                                     </div>
                                     <p class="tm-card-quote">"From first site visit to final documentation, the team was precise, transparent, and genuinely committed to securing the best value corridors for our portfolio."</p>
                                     <div class="tm-card-author">
-                                        <img src="Assets/Img/testimonial_kiran.webp" alt="Kiran Mehta" class="tm-card-avatar" loading="lazy">
+                                        <img src="Assets/Img/testimonial_kiran.webp" srcset="Assets/Img/testimonial_kiran-96w.webp 96w, Assets/Img/testimonial_kiran-150w.webp 150w, Assets/Img/testimonial_kiran.webp 1024w" sizes="(max-width: 992px) 38px, 46px" alt="Kiran Mehta" class="tm-card-avatar" loading="lazy" decoding="async" width="1024" height="1024">
                                         <div class="tm-author-info">
                                             <span class="tm-author-name">Kiran Mehta</span>
                                             <span class="tm-author-role">Portfolio Director, Vanguard Invst</span>
@@ -1272,7 +1324,7 @@
                                 <div class="nri-grid">
 
                                     <div class="nri-card" tabindex="0">
-                                        <img src="Assets/Img/burjk.webp" alt="NRI investors in the Middle East" loading="lazy">
+                                        <img src="Assets/Img/burjk.webp" srcset="Assets/Img/burjk-400w.webp 400w, Assets/Img/burjk-700w.webp 700w, Assets/Img/burjk-1000w.webp 1000w, Assets/Img/burjk.webp 2268w" sizes="(max-width: 768px) 90vw, (max-width: 1024px) 45vw, 380px" alt="NRI investors in the Middle East" loading="lazy" decoding="async" width="2268" height="4032">
                                         <div class="nri-card-overlay"></div>
                                         <div class="nri-card-content"><!-- <span class="nri-card-region">Middle East</span> -->
                                             <!-- <span class="nri-card-tagline">High-Growth Portfolio</span> -->
@@ -1286,7 +1338,7 @@
                                     </div>
 
                                     <div class="nri-card" tabindex="0">
-                                        <img src="Assets/Img/statue-l.webp" alt="NRI investors in the United States" loading="lazy">
+                                        <img src="Assets/Img/statue-l.webp" srcset="Assets/Img/statue-l-400w.webp 400w, Assets/Img/statue-l-700w.webp 700w, Assets/Img/statue-l-1000w.webp 1000w, Assets/Img/statue-l.webp 2322w" sizes="(max-width: 768px) 90vw, (max-width: 1024px) 45vw, 380px" alt="NRI investors in the United States" loading="lazy" decoding="async" width="2322" height="4128">
                                         <div class="nri-card-overlay"></div>
                                         <div
                                             class="nri-card-content"><!-- <span class="nri-card-region">United States</span>
@@ -1301,7 +1353,7 @@
                                     </div>
 
                                     <div class="nri-card" tabindex="0">
-                                        <img src="Assets/Img/eiffel-t.webp" alt="NRI investors in the United Kingdom" loading="lazy">
+                                        <img src="Assets/Img/eiffel-t.webp" srcset="Assets/Img/eiffel-t-400w.webp 400w, Assets/Img/eiffel-t-700w.webp 700w, Assets/Img/eiffel-t-1000w.webp 1000w, Assets/Img/eiffel-t.webp 3010w" sizes="(max-width: 768px) 90vw, (max-width: 1024px) 45vw, 380px" alt="NRI investors in the United Kingdom" loading="lazy" decoding="async" width="3010" height="4010">
                                         <div class="nri-card-overlay"></div>
                                         <div class="nri-card-content"><!-- <span class="nri-card-region">United Kingdom</span> -->
                                             <!-- <span class="nri-card-tagline">Preserve Family Legacy</span> -->
@@ -1315,7 +1367,7 @@
                                     </div>
 
                                     <div class="nri-card" tabindex="0">
-                                        <img src="Assets/Img/lotus.webp" alt="NRI investors in Australia" loading="lazy">
+                                        <img src="Assets/Img/lotus.webp" srcset="Assets/Img/lotus-400w.webp 400w, Assets/Img/lotus-700w.webp 700w, Assets/Img/lotus-1000w.webp 1000w, Assets/Img/lotus.webp 2602w" sizes="(max-width: 768px) 90vw, (max-width: 1024px) 45vw, 380px" alt="NRI investors in Australia" loading="lazy" decoding="async" width="2602" height="4626">
                                         <div class="nri-card-overlay"></div>
                                         <div class="nri-card-content"><!-- <span class="nri-card-region">Australia</span> -->
                                             <!-- <span class="nri-card-tagline">Secure Land Holdings</span> -->
@@ -1519,7 +1571,7 @@
                         <div class="container">
                             <div class="cf-footer-row">
                                 <div class="cf-footer-brand">
-                                    <img src="Assets/Img/logo-white 1.svg" alt="Yoshitha's Real Rise Logo" class="cf-footer-logo">
+                                    <img src="Assets/Img/logo-white 1.svg" alt="Yoshitha's Real Rise Logo" class="cf-footer-logo" loading="lazy" decoding="async">
                                     <p>Redefining luxury living and plotting infrastructure in partnership with Yoshitha Infra.</p>
                                     <!-- <a href="#contact" class="cf-footer-cta">
                                                                                                                                                                                                     <span>Get in Touch</span>
@@ -1597,60 +1649,105 @@
         <!-- Lenis Smooth Scroll -->
         <script src="https://unpkg.com/lenis@1.1.9/dist/lenis.min.js"></script>
 
-        <!-- Google reCAPTCHA -->
-        <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+        <!-- Google reCAPTCHA — deferred until the contact form is about to scroll into view -->
+        <script>
+            (function () {
+                function loadRecaptcha() {
+                    if (document.getElementById('recaptcha-api-script')) return;
+                    var s = document.createElement('script');
+                    s.id = 'recaptcha-api-script';
+                    s.src = 'https://www.google.com/recaptcha/api.js';
+                    s.async = true;
+                    s.defer = true;
+                    document.head.appendChild(s);
+                }
+                var contactSection = document.getElementById('contact');
+                if ('IntersectionObserver' in window && contactSection) {
+                    var recaptchaObserver = new IntersectionObserver(function (entries, observer) {
+                        entries.forEach(function (entry) {
+                            if (entry.isIntersecting) {
+                                loadRecaptcha();
+                                observer.disconnect();
+                            }
+                        });
+                    }, { rootMargin: '600px 0px' });
+                    recaptchaObserver.observe(contactSection);
+                } else {
+                    loadRecaptcha();
+                }
+            })();
+        </script>
 
         <!-- Page Scripts -->
-        <script src="js/main.js?v=101"></script>
-        <script src="js/form.js?v=101"></script>
+        <script src="js/main.js?v=101" defer></script>
+        <script src="js/form.js?v=101" defer></script>
         <script src="js/floating-contact-widget.js?v=1" defer></script>
 
-        <!-- Three.js r134 (required by Vanta) -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
-        <!-- Vanta Birds -->
-        <script src="https://cdn.jsdelivr.net/npm/vanta@0.5.24/dist/vanta.birds.min.js"></script>
-
-        <!-- Vanta Birds Initialization -->
+        <!-- Three.js + Vanta Birds — desktop only. Skipped entirely (no download, no WebGL
+             context) on mobile/tablet. Breakpoint matches the mobile-menu switch in
+             css/main.css (@media max-width: 992px) so "mobile and tablet" means the same
+             thing here as everywhere else in the codebase. -->
         <script>
-            (function initVantaBirds() {
-                if (typeof VANTA === 'undefined' || typeof THREE === 'undefined') 
-                    return;
-                
+            (function () {
+                if (window.matchMedia('(max-width: 992px)').matches) return;
 
-
-                VANTA.BIRDS({
-                    el: '#vanta-bg',
-                    THREE: THREE,
-                    mouseControls: true,
-                    touchControls: true,
-                    gyroControls: false,
-                    minHeight: 200,
-                    minWidth: 200,
-                    scale: 1.0,
-                    scaleMobile: 1.0,
-                    backgroundColor: 0xffffff,
-                    color1: 0xb9ffda, /* light mint green — site accent */
-                    color2: 0xc8e6f5, /* soft blue — site blue tint */
-                    wingSpan: 24,
-                    quantity: 4,
-                    speedLimit: 4,
-                    separation: 80,
-                    alignment: 50,
-                    cohesion: 50
-                });
-
-                /* Forward all document mousemove events to #vanta-bg so the
-         birds react to the cursor even when hovering over content  */
-                const vantaEl = document.getElementById('vanta-bg');
-                if (vantaEl) {
-                    document.addEventListener('mousemove', function (e) {
-                        vantaEl.dispatchEvent(new MouseEvent('mousemove', {
-                            clientX: e.clientX,
-                            clientY: e.clientY,
-                            bubbles: false
-                        }));
-                    }, {passive: true});
+                function loadScript(src, onload) {
+                    var s = document.createElement('script');
+                    s.src = src;
+                    s.onload = onload;
+                    document.head.appendChild(s);
                 }
+
+                function initVantaBirds() {
+                    if (typeof VANTA === 'undefined' || typeof THREE === 'undefined')
+                        return;
+
+                    VANTA.BIRDS({
+                        el: '#vanta-bg',
+                        THREE: THREE,
+                        mouseControls: true,
+                        touchControls: true,
+                        gyroControls: false,
+                        minHeight: 200,
+                        minWidth: 200,
+                        scale: 1.0,
+                        scaleMobile: 1.0,
+                        backgroundColor: 0xffffff,
+                        color1: 0xb9ffda, /* light mint green — site accent */
+                        color2: 0xc8e6f5, /* soft blue — site blue tint */
+                        wingSpan: 24,
+                        quantity: 4,
+                        speedLimit: 4,
+                        separation: 80,
+                        alignment: 50,
+                        cohesion: 50
+                    });
+
+                    /* Forward all document mousemove events to #vanta-bg so the
+         birds react to the cursor even when hovering over content  */
+                    const vantaEl = document.getElementById('vanta-bg');
+                    if (vantaEl) {
+                        document.addEventListener('mousemove', function (e) {
+                            vantaEl.dispatchEvent(new MouseEvent('mousemove', {
+                                clientX: e.clientX,
+                                clientY: e.clientY,
+                                bubbles: false
+                            }));
+                        }, {passive: true});
+                    }
+                }
+
+                function startWhenLoaded() {
+                    if (document.readyState === 'complete') {
+                        initVantaBirds();
+                    } else {
+                        window.addEventListener('load', initVantaBirds);
+                    }
+                }
+
+                loadScript('https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js', function () {
+                    loadScript('https://cdn.jsdelivr.net/npm/vanta@0.5.24/dist/vanta.birds.min.js', startWhenLoaded);
+                });
             })();
         </script>
 
@@ -1664,7 +1761,7 @@
                         <line x1="6" y1="6" x2="18" y2="18"></line>
                     </svg>
                 </button>
-                <img src="Assets/Img/master-plan-img.webp" alt="Yoshitha Real Rise Master Plan" class="mp-lightbox-img" loading="lazy">
+                <img src="Assets/Img/master-plan-img.webp" alt="Yoshitha Real Rise Master Plan" class="mp-lightbox-img" loading="lazy" decoding="async" width="940" height="530">
             </div>
         </div>
 

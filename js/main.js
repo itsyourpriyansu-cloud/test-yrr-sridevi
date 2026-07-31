@@ -477,9 +477,29 @@ document.addEventListener('DOMContentLoaded', () => {
       const img = slide.querySelector('.sg-img');
       if (img) {
         const src = img.dataset.src;
-        if (src && img.getAttribute('src') !== src) {
-          img.src = src;
+
+        function loadEmbed() {
+          if (src && img.getAttribute('src') !== src) {
+            img.src = src;
+          }
         }
+
+        // The Vimeo embed only needs to start buffering once the gallery
+        // section is about to enter the viewport, not on initial page load.
+        if (src && 'IntersectionObserver' in window) {
+          const embedObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+              if (entry.isIntersecting) {
+                loadEmbed();
+                observer.unobserve(img);
+              }
+            });
+          }, { rootMargin: '400px' });
+          embedObserver.observe(sliderWrapper);
+        } else {
+          loadEmbed();
+        }
+
         gsap.set(img, { scale: 1 });
         gsap.to(img, {
           scale: 1.05,
@@ -1263,9 +1283,33 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     }
 
-    sections.forEach(selector => {
+    // The hero (and the strip directly beneath it) must animate in on the very
+    // first frame, exactly as before. Everything else is below the fold, so its
+    // ScrollTrigger setup is pushed past the browser's next idle slot — this
+    // frees the main thread right after paint instead of making the hero reveal
+    // wait behind ~10 sections' worth of querySelectorAll + ScrollTrigger.create
+    // calls for content the user hasn't scrolled to yet. Trigger positions are
+    // unaffected: the existing `window.addEventListener('load', () => ScrollTrigger.refresh())`
+    // (below) already recalculates every trigger's start/end once the page — and
+    // any lazy images — have finished loading, regardless of creation order.
+    const ABOVE_FOLD_SECTIONS = ['#hero', '.hero-stats-strip'];
+    const belowFoldSections = sections.filter(s => !ABOVE_FOLD_SECTIONS.includes(s));
+
+    ABOVE_FOLD_SECTIONS.forEach(selector => {
       animateSection(selector, childSelectors);
     });
+
+    function revealBelowFoldSections() {
+      belowFoldSections.forEach(selector => {
+        animateSection(selector, childSelectors);
+      });
+    }
+
+    if ('requestIdleCallback' in window) {
+      requestIdleCallback(revealBelowFoldSections, { timeout: 800 });
+    } else {
+      setTimeout(revealBelowFoldSections, 0);
+    }
   }
 
   initSectionRevealAnimations();
@@ -1306,26 +1350,29 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // 14. Amenities Gallery Lightbox
   (function () {
+    // w/h are each file's real intrinsic pixel dimensions (measured from the
+    // source webp headers) so the lightbox can size the <img> per-item instead
+    // of guessing a single aspect ratio, preventing layout shift on open/navigate.
     const AMENITIES = [
-      { title: 'Avenue Plantations', desc: 'Tree-lined avenues that create a refreshing, green environment for peaceful everyday living.', img: 'Assets/Amenities/avenue-plantation.webp' },
-      { title: 'Central Park with Water Body', desc: 'A beautifully designed central park with a serene water feature, offering the perfect space to relax and reconnect with nature.', img: 'Assets/Amenities/central-park.webp' },
-      { title: "Kid's Play Zone", desc: 'A safe and engaging play area where children can learn, explore, and enjoy endless fun.', img: 'Assets/Amenities/children-playarea.webp' },
-      { title: 'Open Theatre', desc: 'An open-air gathering space designed for cultural events, celebrations, and memorable community experiences.', img: 'Assets/Amenities/open-theatre.webp' },
-      { title: 'Senior Citizen Park', desc: 'A peaceful and comfortable green space designed exclusively for relaxation, wellness, and social interaction.', img: 'Assets/Amenities/senior-citizens-park.webp' },
-      { title: 'Sports Zone', desc: 'Dedicated sports facilities that encourage an active, healthy, and energetic lifestyle for all age groups.', img: 'Assets/Amenities/sports.webp' },
-      { title: 'Private Swimming Pool', desc: 'An exclusive swimming pool offering a refreshing escape and a premium leisure experience for residents.', img: 'Assets/Amenities/swimming-pool.webp' },
-      { title: 'Site View Point', desc: 'Enjoy panoramic views of the community from a thoughtfully designed viewpoint that showcases the beauty of Real Rise.', img: 'Assets/Amenities/community-aerial-view.webp' },
-      { title: 'Herbal Garden', desc: 'A thoughtfully curated herbal garden that promotes natural wellness in a refreshing green setting.', img: 'Assets/Amenities/garden-spot.webp' },
-      { title: 'Recreation Zone', desc: 'A vibrant recreational space where families can unwind, connect, and create lasting memories together.', img: 'Assets/Amenities/chill-out-spot.webp' },
-      { title: 'Project Junction', desc: 'The heart of the community, bringing together landscaped spaces, pathways, and lifestyle amenities for everyday convenience.', img: 'Assets/Amenities/sculpture-fountain-plaza.webp' },
+      { title: 'Avenue Plantations', desc: 'Tree-lined avenues that create a refreshing, green environment for peaceful everyday living.', img: 'Assets/Amenities/avenue-plantation.webp', w: 370, h: 510 },
+      { title: 'Central Park with Water Body', desc: 'A beautifully designed central park with a serene water feature, offering the perfect space to relax and reconnect with nature.', img: 'Assets/Amenities/central-park.webp', w: 370, h: 510 },
+      { title: "Kid's Play Zone", desc: 'A safe and engaging play area where children can learn, explore, and enjoy endless fun.', img: 'Assets/Amenities/children-playarea.webp', w: 370, h: 510 },
+      { title: 'Open Theatre', desc: 'An open-air gathering space designed for cultural events, celebrations, and memorable community experiences.', img: 'Assets/Amenities/open-theatre.webp', w: 370, h: 510 },
+      { title: 'Senior Citizen Park', desc: 'A peaceful and comfortable green space designed exclusively for relaxation, wellness, and social interaction.', img: 'Assets/Amenities/senior-citizens-park.webp', w: 1000, h: 700 },
+      { title: 'Sports Zone', desc: 'Dedicated sports facilities that encourage an active, healthy, and energetic lifestyle for all age groups.', img: 'Assets/Amenities/sports.webp', w: 370, h: 510 },
+      { title: 'Private Swimming Pool', desc: 'An exclusive swimming pool offering a refreshing escape and a premium leisure experience for residents.', img: 'Assets/Amenities/swimming-pool.webp', w: 370, h: 510 },
+      { title: 'Site View Point', desc: 'Enjoy panoramic views of the community from a thoughtfully designed viewpoint that showcases the beauty of Real Rise.', img: 'Assets/Amenities/community-aerial-view.webp', w: 1000, h: 700 },
+      { title: 'Herbal Garden', desc: 'A thoughtfully curated herbal garden that promotes natural wellness in a refreshing green setting.', img: 'Assets/Amenities/garden-spot.webp', w: 370, h: 510 },
+      { title: 'Recreation Zone', desc: 'A vibrant recreational space where families can unwind, connect, and create lasting memories together.', img: 'Assets/Amenities/chill-out-spot.webp', w: 370, h: 510 },
+      { title: 'Project Junction', desc: 'The heart of the community, bringing together landscaped spaces, pathways, and lifestyle amenities for everyday convenience.', img: 'Assets/Amenities/sculpture-fountain-plaza.webp', w: 1000, h: 700 },
       // Bonus gallery shots — no dedicated card, but browsable from any card's lightbox
-      { title: 'Jogging Track', desc: 'A palm-fringed track that turns every run into a scenic escape, right at your doorstep.', img: 'Assets/Amenities/roads.webp' },
-      { title: 'Blossom Bridge', desc: 'A charming timber bridge weaving through fragrant gardens, made for slow evening walks.', img: 'Assets/Amenities/blossom-bridge.webp' },
-      { title: 'Entrance Plaza', desc: 'A striking gateway of architecture and light, the first impression of a life well-designed.', img: 'Assets/Amenities/entrance-plaza.webp' },
-      { title: 'Bougainvillea Avenue', desc: 'Blossom-lined boulevards that turn every drive home into a scenic one.', img: 'Assets/Amenities/bougainvillea-avenue.webp' },
-      { title: 'Poolside Deck', desc: 'Sun loungers and shaded corners set around the water, made for lazy weekend afternoons.', img: 'Assets/Amenities/poolside-deck.webp' },
-      { title: 'Garden Sculpture at Dusk', desc: 'Illuminated art and manicured lawns that turn evening walks into something memorable.', img: 'Assets/Amenities/garden-sculpture-dusk.webp' },
-      { title: 'Palm Fountain Walkway', desc: 'A shaded, palm-canopied path leading to a tranquil fountain courtyard.', img: 'Assets/Amenities/palm-fountain-walkway.webp' }
+      { title: 'Jogging Track', desc: 'A palm-fringed track that turns every run into a scenic escape, right at your doorstep.', img: 'Assets/Amenities/roads.webp', w: 370, h: 510 },
+      { title: 'Blossom Bridge', desc: 'A charming timber bridge weaving through fragrant gardens, made for slow evening walks.', img: 'Assets/Amenities/blossom-bridge.webp', w: 370, h: 510 },
+      { title: 'Entrance Plaza', desc: 'A striking gateway of architecture and light, the first impression of a life well-designed.', img: 'Assets/Amenities/entrance-plaza.webp', w: 1000, h: 700 },
+      { title: 'Bougainvillea Avenue', desc: 'Blossom-lined boulevards that turn every drive home into a scenic one.', img: 'Assets/Amenities/bougainvillea-avenue.webp', w: 1000, h: 700 },
+      { title: 'Poolside Deck', desc: 'Sun loungers and shaded corners set around the water, made for lazy weekend afternoons.', img: 'Assets/Amenities/poolside-deck.webp', w: 1000, h: 700 },
+      { title: 'Garden Sculpture at Dusk', desc: 'Illuminated art and manicured lawns that turn evening walks into something memorable.', img: 'Assets/Amenities/garden-sculpture-dusk.webp', w: 1000, h: 700 },
+      { title: 'Palm Fountain Walkway', desc: 'A shaded, palm-canopied path leading to a tranquil fountain courtyard.', img: 'Assets/Amenities/palm-fountain-walkway.webp', w: 1000, h: 700 }
     ];
 
     const cards      = document.querySelectorAll('.si-card[data-amenity-index]');
@@ -1376,6 +1423,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const applyContent = () => {
         imgEl.src = item.img;
+        imgEl.width = item.w;
+        imgEl.height = item.h;
         imgEl.alt = item.title;
         titleEl.textContent = item.title;
         descEl.textContent = item.desc;
@@ -1499,6 +1548,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const video = card.querySelector('[data-about-video]');
     const muteBtn = card.querySelector('[data-mute-btn]');
+
+    // Defer fetching the video source until the reel scrolls into view.
+    if ('IntersectionObserver' in window && video.dataset.src) {
+      const videoObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            video.src = video.dataset.src;
+            video.play().catch(() => {});
+            observer.unobserve(video);
+          }
+        });
+      }, { rootMargin: '200px' });
+      videoObserver.observe(video);
+    } else if (video.dataset.src) {
+      video.src = video.dataset.src;
+      video.play().catch(() => {});
+    }
 
     video.addEventListener('volumechange', () => {
       muteBtn.classList.toggle('is-muted', video.muted);
